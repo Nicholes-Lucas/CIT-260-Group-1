@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cityofaaron.model;
+import java.io.Serializable;
 
 /**
  *
@@ -11,20 +12,17 @@ package cityofaaron.model;
  */
 public enum TeamMember {
     
-    Lucas("Lucas", "theMagnifcent"),
-    Susan("Susan", "thePatient"),
-    Kristina("Kristina", "I is Smart"); 
-    
-    
-    
+    Lucas("Lucas Nicholes", "theMagnifcent"),
+    Susan("Susan Peay", "thePatient"),
+    Kristina("Kristina Plauche", "theIntelligent");     
     
     private String name;
     private String title;
 
-TeamMember(String name, String title){
-this.name = name;
-this.title = title;
-}
+    TeamMember(String name, String title){
+        this.name = name;
+        this.title = title;
+    }
 
     public String getName() {
         return name;

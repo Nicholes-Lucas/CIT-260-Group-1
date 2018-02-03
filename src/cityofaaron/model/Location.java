@@ -30,9 +30,6 @@ public class Location implements Serializable {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
-    }
-    
-   
-    
+    }    
     
 }
