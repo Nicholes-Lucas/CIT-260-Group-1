@@ -5,6 +5,8 @@
  */
 package cityofaaron.model;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  *
  * @author kristinaplauche
@@ -14,9 +16,9 @@ public class Game implements Serializable {
     private Player thePlayer;
     private CropData cropData;
     private TeamMember team[];
-    private ListItem animals;
-    private ListItem tools;
-    private ListItem provisions;
+    private ArrayList<ListItem> animals = new ArrayList<>();
+    private ArrayList<ListItem> tools = new ArrayList<>();
+    private ArrayList<ListItem> provisions = new ArrayList<>();
 
     public Game() {
     }
@@ -53,30 +55,31 @@ public class Game implements Serializable {
         this.team = team;
     }
 
-    public ListItem getAnimals() {
+    public ArrayList<ListItem> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(ListItem animals) {
+    public void setAnimals(ArrayList<ListItem> animals) {
         this.animals = animals;
     }
 
-    public ListItem getTools() {
+    public ArrayList<ListItem> getTools() {
         return tools;
     }
 
-    public void setTools(ListItem tools) {
+    public void setTools(ArrayList<ListItem> tools) {
         this.tools = tools;
     }
 
-    public ListItem getProvisions() {
+    public ArrayList<ListItem> getProvisions() {
         return provisions;
     }
 
-    public void setProvisions(ListItem provisions) {
+    public void setProvisions(ArrayList<ListItem> provisions) {
         this.provisions = provisions;
     }
 
+    
     
     
     
