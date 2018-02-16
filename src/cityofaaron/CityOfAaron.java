@@ -12,6 +12,7 @@ import cityofaaron.model.Player;
 import cityofaaron.model.TeamMember;
 import cityofaaron.model.CropData;
 
+
 /**
  *
  * @author kristinaplauche
@@ -59,6 +60,9 @@ public class CityOfAaron {
         String itemName = itemOne.getName();
         int itemNumber = itemOne.getNumber();
         System.out.println("Item name " + itemName +"\n" + "Item number " + itemNumber);
+        
+   
+    
         
         
     }
