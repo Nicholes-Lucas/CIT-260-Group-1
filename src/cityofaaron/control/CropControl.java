@@ -65,4 +65,32 @@ public static int calcEatenByRats (CropData cropData) {
     // return bushels eatenByRats
     return eatenByRats;
 }
+// The feedPeople method
+// Purpose: To feed People
+// Parameters: the number of bushels of wheat to feed the people
+// Returns: the number of bushels of wheat in storage after feeding the people
+// Pre-conditions: number of feeding bushels must be >=0
+// and <= the number of bushels of wheat in storage
+public static int feedPeople(int wheatToFeed, CropData cropData){
+    int wheat2 = cropData.getWheatInStore();
+    
+ 
+    // if wheatToFeed < 0, return -1
+    if (wheatToFeed < 0) {
+    return -1;
+    }
+    // if wheatToFeed > wheatInStore,  return -1
+    if (wheatToFeed > wheat2) {
+        return -1;
+    }
+    // wheatInStore = wheatInStore - wheatToFeed
+    wheat2 -= wheatToFeed;
+
+    // wheatToFeed = wheatToFeed
+    cropData.setWheatInStore(wheat2);
+    // return wheatInStore
+
+    return wheat2;
+
+}
 }

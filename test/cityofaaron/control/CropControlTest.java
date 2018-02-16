@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 public class CropControlTest {
     
-    public CropControlTest() {
+   public CropControlTest() {
     }
 
     /**
@@ -31,6 +31,22 @@ public class CropControlTest {
         int expResult = 6;
         int result = CropControl.calcEatenByRats(theRats);
         assertEquals(expResult, result);
+    } 
+
+    /**
+     * Test of feedPeople method, of class CropControl.
+     */
+    @Test
+    public void testFeedPeople() {
+        System.out.println("feedPeople");
+        int wheatToFeed = 100;
+        CropData theFood = new CropData();
+        theFood.setWheatInStore(3000);
+        int expResult = 2900;
+        int result = CropControl.feedPeople(wheatToFeed, theFood);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
     }
     
 }
