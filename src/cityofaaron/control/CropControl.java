@@ -65,6 +65,7 @@ public static int calcEatenByRats (CropData cropData) {
     // return bushels eatenByRats
     return eatenByRats;
 }
+
 // The feedPeople method
 // Purpose: To feed People
 // Parameters: the number of bushels of wheat to feed the people
@@ -93,4 +94,74 @@ public static int feedPeople(int wheatToFeed, CropData cropData){
     return wheat2;
 
 }
+
+/**
+ * @author lucasnicholes
+ */
+
+// The plantCrops method
+// Purpose: To determine the land desired and wheat needed to plant crops
+// Parameters: the number of acres of land to plant
+// Returns: the number of bushels of wheat in store after planting 
+// Pre-conditions: acres to plant must be positive
+// and <= the number of acres owned
+// and wheat to plant must be <= wheatInStore
+public static int plantCrops(int acresToPlant, CropData cropData) {
+    int owned = cropData.getAcresOwned();
+    int wheat = cropData.getWheatInStore();
+    
+    // if acresToPlant < 0, return -1
+    if (acresToPlant < 0)
+        return -1;
+    
+    // if acresToPlant > acresOwned,  return -1
+    if (acresToPlant > owned)
+        return -1;
+    
+    // wheatToPlant = acresToPlant / 2
+    int wheatToPlant = acresToPlant / 2;
+    
+    // if wheatToPlant > wheatInStore, return -1
+    if (wheatToPlant > wheat)
+        return -1;
+    
+    // wheatInStore = wheatInStore - wheatToPlant
+    wheat -= wheatToPlant;
+    cropData.setWheatInStore(wheat);
+    
+    // return wheatInStore
+    return wheat;
+}
+
+// The sellLand method
+// Purpose: To sell land
+// Parameters: the price of land, the number of acres to sell, and a 
+// reference to the Crops object
+// Returns: the number of acres owned after the sale
+// Pre-conditions: acres to sell must be positive
+// and <= acresOwned
+public static int sellLand(int landPrice, int acresToSell, CropData cropData) {
+    int owned = cropData.getAcresOwned();
+    int wheat = cropData.getWheatInStore();
+    
+    //if acresToSell < 0, return -1
+    if(acresToSell < 0)
+        return -1;
+
+    //if acresToSell > acresOwned, return -1        
+    if(acresToSell > owned)
+        return -1;
+
+    //acresOwned = acresOwned - acresToSell
+    owned -= acresToSell;
+    cropData.setAcresOwned(owned);
+
+    //wheatInStore = wheatInStore + acresToSell * landPrice
+    wheat += (acresToSell * landPrice);
+    cropData.setWheatInStore(wheat);
+
+    //return acresOwned
+    return owned;
+} 
+
 }
