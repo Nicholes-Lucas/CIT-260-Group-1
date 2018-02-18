@@ -162,6 +162,49 @@ public static int sellLand(int landPrice, int acresToSell, CropData cropData) {
 
     //return acresOwned
     return owned;
-} 
+}
 
+/*
+ * @author Susan Peay
+ */
+
+// The buyLand method
+// Purpose: to buy land
+// Parameters: the price of land, and the number of acres to buy
+// Returns: the total number of acres after the purchase
+// Pre-conditions: 
+// 1. acres to purchase must be positive
+// 2. Amount of wheat needed for purchase must be available
+//    Amount of wheat >= number of acres * buy price 
+// 3. Amount of population must be enough to tend land
+//    Population 10 >= for each acre
+public static int buyLand(int acresToBuy, CropData cropData){
+    int wheat = cropData.getWheatInStore();
+    int owned = cropData.getAcresOwned();
+    int population = cropData.getPopulation();
+    int landPrice = random.nextInt(28)-17; //random landPrice, value 17-27
+    
+    //if acresToBuy <0, return -1
+    if(acresToBuy < 0)
+        return -1;
+
+    //if wheatInStore < (acresToBuy * landPrice) return -1
+    if((acresToBuy * landPrice) > wheat)
+        return -1;
+
+    //if population cannot tend new land, return -1
+    if(population < (acresToBuy + owned)/10)
+        return -1;
+
+    //acresOwned = acresOwned+acresToBuy
+    owned += acresToBuy;
+    cropData.setAcresOwned(owned);
+
+    //wheatInStore = wheatInStore - (acresToBuy*landPrice)
+    wheat -= (acresToBuy*landPrice);
+    cropData.setWheatInStore(wheat);
+
+    //return acresOwned
+    return owned;
+}
 }

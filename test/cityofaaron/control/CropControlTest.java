@@ -276,4 +276,61 @@ public class CropControlTest {
         result = CropControl.sellLand(landPrice, acresToSell, theCrops);
         assertEquals(expResult, result);
     }
+    
+    /**
+    * Test of buyLand method, of class CropControl.
+    */
+    @Test
+    public void testBuyLand() {
+        //Test 1 - Valid
+        System.out.println("buyLand Test Case #1");
+        CropData theAcres = new CropData();
+        theAcres.setWheatInStore(2800);
+        theAcres.setAcresOwned(0);
+        theAcres.setPopulation(1000);
+        int acresToBuy = 100;
+        int expResult = 100;
+        int result = CropControl.buyLand(acresToBuy, theAcres);
+        assertEquals(expResult, result);
+
+        //Test 2 - Invalid 
+        System.out.println("buyLand Test Case #2");
+        theAcres.setWheatInStore(2800);
+        theAcres.setAcresOwned(0);
+        theAcres.setPopulation(1000);
+        acresToBuy = -5;
+        expResult = -1;
+        result = CropControl.buyLand(acresToBuy, theAcres);
+        assertEquals(expResult, result);
+
+        //Test 3 - Invalid 
+        System.out.println("buyLand Test Case #3");
+        theAcres.setWheatInStore(2800);
+        theAcres.setAcresOwned(0);
+        theAcres.setPopulation(1000);
+        acresToBuy = 30000;
+        expResult = -1;
+        result = CropControl.buyLand(acresToBuy, theAcres);
+        assertEquals(expResult, result);
+
+        //Test 4 - Boundary 
+        System.out.println("buyLand Test Case #4");
+        theAcres.setWheatInStore(2800);
+        theAcres.setAcresOwned(0);
+        theAcres.setPopulation(1000);
+        acresToBuy = 100;
+        expResult = 100;
+        result = CropControl.buyLand(acresToBuy, theAcres);
+        assertEquals(expResult, result);
+
+        //Test 5 - Boundary 
+        System.out.println("buyLand Test Case #5");
+        theAcres.setWheatInStore(2800);
+        theAcres.setAcresOwned(0);
+        theAcres.setPopulation(1000);
+        acresToBuy = 0;
+        expResult = 0;
+        result = CropControl.buyLand(acresToBuy, theAcres);
+        assertEquals(expResult, result);
+     }
 }
