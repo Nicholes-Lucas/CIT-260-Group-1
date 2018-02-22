@@ -118,6 +118,8 @@ public static int plantCrops(int acresToPlant, CropData cropData) {
     if (acresToPlant > owned)
         return -1;
     
+    cropData.setAcresPlanted(acresToPlant);
+    
     // wheatToPlant = acresToPlant / 2
     int wheatToPlant = acresToPlant / 2;
     
@@ -130,7 +132,7 @@ public static int plantCrops(int acresToPlant, CropData cropData) {
     cropData.setWheatInStore(wheat);
     
     // return wheatInStore
-    return wheat;
+    return wheat;    
 }
 
 // The sellLand method
