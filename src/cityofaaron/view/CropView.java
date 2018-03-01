@@ -37,7 +37,25 @@ public class CropView {
         toBuy = keyboard.nextInt();
 
         // Call the buyLand() method in the control layer to buy the land
-        CropControl.buyLand(price, toBuy);
+        CropControl.buyLand(price, toBuy, cropData);
+    }
+    
+    // The plantCropsView method
+    // Purpose: interface with the user input for planting crops
+    // Parameters: none
+    // Returns: none
+    public static void plantCropsView()
+    {
+        // Prompt the user to enter the amount of wheat to plant
+        System.out.print("\nYou can plant 2 acres with one bushel of wheat.");
+        System.out.print("\nHow many acres of land do you want to plant? ");
+
+        //  Get the user’s input and save it.
+        int toPlant;
+        toPlant = keyboard.nextInt();
+
+        // Call the buyLand() method in the control layer to buy the land
+        CropControl.plantCrops(toPlant, cropData);
     }
     
     // The runCropsView method()

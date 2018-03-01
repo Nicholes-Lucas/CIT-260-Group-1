@@ -290,7 +290,8 @@ public class CropControlTest {
         theAcres.setPopulation(1000);
         int acresToBuy = 100;
         int expResult = 100;
-        int result = CropControl.buyLand(acresToBuy, theAcres);
+        int landPrice = 10;
+        int result = CropControl.buyLand(landPrice, acresToBuy, theAcres);
         assertEquals(expResult, result);
 
         //Test 2 - Invalid 
@@ -300,7 +301,8 @@ public class CropControlTest {
         theAcres.setPopulation(1000);
         acresToBuy = -5;
         expResult = -1;
-        result = CropControl.buyLand(acresToBuy, theAcres);
+        landPrice = 10;
+        result = CropControl.buyLand(landPrice, acresToBuy, theAcres);
         assertEquals(expResult, result);
 
         //Test 3 - Invalid 
@@ -310,7 +312,8 @@ public class CropControlTest {
         theAcres.setPopulation(1000);
         acresToBuy = 30000;
         expResult = -1;
-        result = CropControl.buyLand(acresToBuy, theAcres);
+        landPrice = 10;
+        result = CropControl.buyLand(landPrice, acresToBuy, theAcres);;
         assertEquals(expResult, result);
 
         //Test 4 - Boundary 
@@ -320,7 +323,8 @@ public class CropControlTest {
         theAcres.setPopulation(1000);
         acresToBuy = 100;
         expResult = 100;
-        result = CropControl.buyLand(acresToBuy, theAcres);
+        landPrice = 10;
+        result = CropControl.buyLand(landPrice, acresToBuy, theAcres);
         assertEquals(expResult, result);
 
         //Test 5 - Boundary 
@@ -330,7 +334,8 @@ public class CropControlTest {
         theAcres.setPopulation(1000);
         acresToBuy = 0;
         expResult = 0;
-        result = CropControl.buyLand(acresToBuy, theAcres);
+        landPrice = 10;
+        result = CropControl.buyLand(landPrice, acresToBuy, theAcres);
         assertEquals(expResult, result);
      }
 }
