@@ -71,7 +71,7 @@ public class Game implements Serializable {
     }
 
     
-    
+   private CropData theCrops = null; 
     
     
 }
