@@ -48,8 +48,8 @@ public class CropView {
     public static void feedPeopleView(){    {
         
     }
-        // Get the cost of land for this round.
-        int wheatStore = CropControl.feedPeople();
+        // Get the amount of wheat in store
+        int wheatStore = cropData.getWheatInStore();
 
         // Ask the user how many bushels of wheat they want to give to the people?
         System.out.format("You have" + wheatStore + "wheat left in store.");
@@ -62,7 +62,7 @@ public class CropView {
 
         // Call the feedPeople() method in the control layer to feed the people
         
-        CropControl.feedPeople(wheatStore, cropData);
+        CropControl.feedPeople(toGive, cropData);
     }
     
     // The plantCropsView method
