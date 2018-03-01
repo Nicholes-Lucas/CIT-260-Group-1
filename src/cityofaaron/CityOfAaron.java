@@ -19,7 +19,7 @@ public class CityOfAaron {
 
     public static void setTheGame(Game theGame) {
         CityOfAaron.theGame = theGame;
-    }
+    }   
     
     // main function - entry point for the program
     // runs the main menu

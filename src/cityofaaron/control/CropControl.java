@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cityofaaron.control;
 
 import cityofaaron.model.CropData;
@@ -15,7 +11,20 @@ import java.util.Random;
 
 public class CropControl {
     
+// constants
+private static final int LAND_BASE = 17;
+private static final int LAND_RANGE = 10;
+    
 private static Random random = new Random();
+
+// calcLandCost() method
+// Purpose: Calculate a random land cost between 17 and 26 bushels/acre
+// Parameters: none
+// Returns: the land cost
+public static int calcLandCost(){
+    int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;  
+    return landPrice;            
+}
     
 // The calcEatenByRats method
 // Purpose: To determine wheat eaten by rats
@@ -180,11 +189,11 @@ public static int sellLand(int landPrice, int acresToSell, CropData cropData) {
 //    Amount of wheat >= number of acres * buy price 
 // 3. Amount of population must be enough to tend land
 //    Population 10 >= for each acre
-public static int buyLand(int acresToBuy, CropData cropData){
+public static int buyLand(int landPrice, int acresToBuy, CropData cropData){
     int wheat = cropData.getWheatInStore();
     int owned = cropData.getAcresOwned();
     int population = cropData.getPopulation();
-    int landPrice = random.nextInt(28)-17; //random landPrice, value 17-27
+    //int landPrice = random.nextInt(28)-17; //random landPrice, value 17-27
     
     //if acresToBuy <0, return -1
     if(acresToBuy < 0)

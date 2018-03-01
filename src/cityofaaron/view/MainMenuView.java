@@ -7,8 +7,7 @@ package cityofaaron.view;
 
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
-import cityofaaron.model.Player;
-import cityofaaron.model.Game;
+import cityofaaron.model.*;
 
 public class MainMenuView {
     
@@ -156,6 +155,24 @@ public class MainMenuView {
          System.out.println("\nWelcome " + name + " have fun.");
          
         // Display the Game menu
+        
+        // Create the CropData object, 
+        // initialize it and save a reference to it in the Game
+        CropData theCrops = new CropData();
+        theCrops.setYear(0);
+        theCrops.setPopulation(100);
+        theCrops.setNewPeople(5);
+        theCrops.setCropYield(3);
+        theCrops.setNumberWhoDied(0);
+        theCrops.setOffering(10);
+        theCrops.setWheatInStore(2700);
+        theCrops.setAcresOwned(1000);
+        theCrops.setAcresPlanted(1000);
+        theCrops.setHarvest(3000);
+        theCrops.setOfferingBushels(300);
+        theCrops.setAcresPlanted(1000); 
+        
+        theGame.setCropData(theCrops);
     } 
     
     // The startSavedGame method
