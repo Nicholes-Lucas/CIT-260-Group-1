@@ -41,6 +41,30 @@ public class CropView {
         CropControl.buyLand(price, toBuy, cropData);
     }
     
+     // The feedPeopleView method
+    // Purpose: interface with the user input for buying wheat to feed people
+    // Parameters: none
+    // Returns: wheat left in store
+    public static void feedPeopleView(){    {
+        
+    }
+        // Get the cost of land for this round.
+        int wheatStore = CropControl.feedPeople();
+
+        // Ask the user how many bushels of wheat they want to give to the people?
+        System.out.format("You have" + wheatStore + "wheat left in store.");
+        System.out.print("\nHow many bushels of wheat do you want to give to the people? ");
+       
+
+        //  Get the user’s input and save it.
+        int toGive;
+        toGive = keyboard.nextInt();
+
+        // Call the feedPeople() method in the control layer to feed the people
+        
+        CropControl.feedPeople(wheatStore, cropData);
+    }
+    
     // The plantCropsView method
     // Purpose: interface with the user input for planting crops
     // Parameters: none
