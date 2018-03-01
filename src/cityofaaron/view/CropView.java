@@ -37,8 +37,7 @@ public class CropView {
         toBuy = keyboard.nextInt();
 
         // Call the buyLand() method in the control layer to buy the land
-        CropControl.buyLand(price, toBuy,);
-=======
+        
         CropControl.buyLand(price, toBuy, cropData);
     }
     
@@ -58,7 +57,6 @@ public class CropView {
 
         // Call the buyLand() method in the control layer to buy the land
         CropControl.plantCrops(toPlant, cropData);
->>>>>>> origin/master
     }
     
     // The runCropsView method()
