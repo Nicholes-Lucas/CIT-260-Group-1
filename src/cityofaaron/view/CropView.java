@@ -95,6 +95,28 @@ public class CropView {
         // add calls to the other crop view methods
         // as they are written
     }
+    
+    // Susan Peay
+    // The sellLandView method
+    // Purpose: interface with the user input for Selling Land
+    // Parameters: none
+    // Returns: none
+    public static void sellLandView()
+    {
+        int owned = cropData.getAcresOwned();
+        
+        // Ask the user "how many acres of new land do you want to sell?"
+        System.out.format("You have" + owned + "acres of land.");
+        System.out.print("\nHow many acres of new land do you want to sell?");
+
+        //  Get the user’s input and save it.
+        int toSell;
+        toSell = keyboard.nextInt();
+
+        // Call the sellLand() method in the control layer to sell the land
+        CropControl.sellLand(owned, toSell, cropData);
+    }
+        
 
 
     
