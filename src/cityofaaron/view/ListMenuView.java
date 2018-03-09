@@ -89,6 +89,10 @@ public class ListMenuView {
         else {
             System.out.println("Please choose a valid option from the menu.");
         }
+        
+        //show the list menu
+        ListMenuView lmv = new ListMenuView();
+        lmv.displayListMenuView();
     }    
     
     // The listAnimals method

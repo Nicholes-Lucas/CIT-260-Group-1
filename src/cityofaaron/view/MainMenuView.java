@@ -173,6 +173,10 @@ public class MainMenuView {
         theCrops.setAcresPlanted(1000); 
         
         theGame.setCropData(theCrops);
+        
+        //show the game menu
+        GameMenuView gmv = new GameMenuView();
+        gmv.displayGameMenuView();
     } 
     
     // The startSavedGame method
