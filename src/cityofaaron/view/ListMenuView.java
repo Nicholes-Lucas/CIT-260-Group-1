@@ -9,16 +9,12 @@ import cityofaaron.CityOfAaron;
  *
  * @author Lucas Nicholes <nic16020@byui.edu>
  */
-public class ListMenuView {
+public class ListMenuView extends MenuView {
     
-    Scanner keyboard = new Scanner(System.in);
-     
-    private String theMenu;
-    private int max; 
     
     public ListMenuView(){   
     
-        theMenu = "\n" +
+        super("\n" +
                        "**********************************\n" +
                        "* CITY OF AARON: VIEW LIST MENU  *\n" +
                        "**********************************\n" +
@@ -26,51 +22,13 @@ public class ListMenuView {
                        " 2 - List the tools in the storehouse\n" +
                        " 3 - List the provisions in the storehouse\n" +
                        " 4 - List the authors of this game\n" +
-                       " 5 - Return to the Game menu\n";
+                       " 5 - Return to the Game menu\n",
+                       5);
 
-        max = 5;
     }
     
-    public void displayListMenuView() {
-    
-        int menuOption;
-        do {
-            // Display the menu
-            System.out.println(theMenu);
-            
-            // Prompt the user and get the user’s input
-            menuOption = this.getMenuOption();
-                
-            // Perform the desired action
-            doAction(menuOption);
-            
-            // Determine and display the next view        
-        }   while (menuOption != max);
-    }
-    
-    private int getMenuOption(){
-        int userInput;
-
-        // begin loop
-        do
-        {
-            // get user input from the keyboard
-            userInput = keyboard.nextInt();
-             
-            // if it is not a valid value, output error message
-            if(userInput < 1 || userInput > max)
-            {
-                System.out.println("\nSelection must be between 1 and " + max);
-            }
-            
-        // loop back to the top if input was not valid
-        }  while(userInput < 1 || userInput > max);
-        
-        // return the value input by the user
-        return userInput; 
-    }
-    
-    public void doAction(int option) {
+   
+     @Override public void doAction(int option){
         if (option == 1) {
             listAnimals();
         }
