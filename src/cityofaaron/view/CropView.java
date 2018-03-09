@@ -41,13 +41,12 @@ public class CropView {
         CropControl.buyLand(price, toBuy, cropData);
     }
     
-     // The feedPeopleView method
+    // The feedPeopleView method
     // Purpose: interface with the user input for buying wheat to feed people
     // Parameters: none
     // Returns: wheat left in store
-    public static void feedPeopleView(){    {
+    public static void feedPeopleView(){
         
-    }
         // Get the amount of wheat in store
         int wheatStore = cropData.getWheatInStore();
 
@@ -83,19 +82,6 @@ public class CropView {
         CropControl.plantCrops(toPlant, cropData);
     }
     
-    // The runCropsView method()
-    // Purpose: runs the City of Aaron game
-    // Parameters: none
-    // Returns: none
-    public static void runCropsView()
-    {
-        // call the buyLandView() method
-        buyLandView();
-
-        // add calls to the other crop view methods
-        // as they are written
-    }
-    
     // Susan Peay
     // The sellLandView method
     // Purpose: interface with the user input for Selling Land
@@ -116,7 +102,22 @@ public class CropView {
         // Call the sellLand() method in the control layer to sell the land
         CropControl.sellLand(owned, toSell, cropData);
     }
-        
+    
+        // The runCropsView method()
+    // Purpose: runs the City of Aaron game
+    // Parameters: none
+    // Returns: none
+    public static void runCropsView()
+    {
+        // call the buyLandView() method
+        buyLandView();
+        sellLandView();
+        feedPeopleView();
+        plantCropsView();       
+
+        // add calls to the other crop view methods
+        // as they are written
+    }
 
 
     
