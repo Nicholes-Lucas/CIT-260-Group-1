@@ -141,6 +141,8 @@ public class MainMenuView extends MenuView{
     // Returns: none
     // ===================================     
     public void displayHelpMenuView() {
+        HelpMenuView hmv = new HelpMenuView();
+     hmv.displayMenu();
         System.out.println("\nDisplay help menu option selected.");
     }
     

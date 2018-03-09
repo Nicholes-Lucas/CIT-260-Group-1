@@ -91,6 +91,15 @@ public class CropView {
     {
         // call the buyLandView() method
         buyLandView();
+        
+        //call the  feedPeopleView(); method
+         feedPeopleView();
+         
+         //call the plantCropsView(); method
+         plantCropsView();
+         
+         // call the sellLandView() method
+        sellLandView();
 
         // add calls to the other crop view methods
         // as they are written
