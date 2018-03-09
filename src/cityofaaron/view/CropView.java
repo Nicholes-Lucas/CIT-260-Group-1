@@ -41,7 +41,7 @@ public class CropView {
         CropControl.buyLand(price, toBuy, cropData);
     }
     
-     // The feedPeopleView method
+     // The feedPeopleView method by Kristina Plauche
     // Purpose: interface with the user input for buying wheat to feed people
     // Parameters: none
     // Returns: wheat left in store
@@ -65,7 +65,7 @@ public class CropView {
         CropControl.feedPeople(toGive, cropData);
     }
     
-    // The plantCropsView method
+    // The plantCropsView method by Lucas Nicholes
     // Purpose: interface with the user input for planting crops
     // Parameters: none
     // Returns: none
@@ -83,7 +83,7 @@ public class CropView {
         CropControl.plantCrops(toPlant, cropData);
     }
     
-    // The runCropsView method()
+    // The runCropsView method()by Lucas Nicholes?
     // Purpose: runs the City of Aaron game
     // Parameters: none
     // Returns: none
@@ -100,6 +100,9 @@ public class CropView {
          
          // call the sellLandView() method
         sellLandView();
+        
+         // call the cropReportView(); method
+         cropReportView();
 
         // add calls to the other crop view methods
         // as they are written
@@ -125,7 +128,52 @@ public class CropView {
         // Call the sellLand() method in the control layer to sell the land
         CropControl.sellLand(owned, toSell, cropData);
     }
+       
+    
+    // Kristina Plauche
+    // The cropReport display
+    // Purpose: To display to the player a report of the current statistics. 
+    
+
+    public static void cropReportView() {
+        // The year number 
+        int year = cropData.getYear();
+        System.out.format("Current Year: " + year + "\n");
+                
+        // How many people starved 
+        int starved = cropData.getNumStarved();
+        System.out.format("Starved : " + starved + "\n");
         
+        // How many people came to the city
+        int movedIn = cropData.getNewPeople();
+        System.out.format("New People: " + movedIn + "\n");
+        
+        // The current population 
+        int population = cropData.getPopulation();
+        System.out.format("Current Population " + population + "\n");
+        
+        // The number of acres of crop land owned by the city
+        int ownedAcres = cropData.getAcresOwned();
+        System.out.format("Acres Owned: " + ownedAcres + "\n");
+        
+        // The number of bushels per acre in this years harvest
+        int yield = cropData.getCropYield();
+        System.out.format("Crop Yield: " + yield + "\n");
+        
+        // The number of bushels of wheat paid in offerings
+        int offerings = cropData.getOfferingBushels();
+        System.out.format("Offering Bushels: " + offerings + "\n");
+        
+        // The number of bushels of wheat eaten by rats
+        int ratFood = cropData.getEatenByRats();
+        System.out.format("Eaten By Rats: " + ratFood + "\n");
+        
+        // The number of bushels of wheat in store
+        int wheatStorage = cropData.getWheatInStore();
+        System.out.format("Wheat in Store: " + wheatStorage + "\n");
+                
+        
+}
 
 
     
