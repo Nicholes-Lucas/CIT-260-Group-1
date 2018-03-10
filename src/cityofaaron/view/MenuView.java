@@ -61,7 +61,7 @@ public abstract class MenuView implements ViewInterface{
         int inputValue = 0;
         do
         {
-          System.out.format("\nPlease enter an option(1 - %d):", max);
+          System.out.format("\nPlease enter an option(1 - %d): ", max);
           inputValue = keyboard.nextInt();
           if(inputValue < 1 || inputValue > max)
           {

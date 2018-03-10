@@ -338,4 +338,89 @@ public class CropControlTest {
         result = CropControl.buyLand(landPrice, acresToBuy, theAcres);
         assertEquals(expResult, result);
      }
+    
+     /**
+     * Test of growPopulation method, of class CropControl.
+     */
+    @Test
+    public void testGrowPopulation () {
+        //Test 1 - Valid
+        System.out.println("testGrowPopulation #1");
+        CropData growPop = new CropData();
+        growPop.setPopulation(100);
+        int minExpResult = 101;
+        int maxExpResult = 105;
+        int result = CropControl.growPopulation(growPop);
+        assertTrue(minExpResult <= result && result <= maxExpResult);
+        
+        //Test 2 - Invalid
+        System.out.println("testGrowPopulation #2");
+        growPop.setPopulation(-100);
+        int expResult = -1;
+        result = CropControl.growPopulation(growPop);
+        assertEquals(expResult, result);
+        
+        //Test 3 - Boundary
+        System.out.println("testGrowPopulation #3");
+        growPop.setPopulation(0);
+        minExpResult = 0;
+        maxExpResult = 0;
+        result = CropControl.growPopulation(growPop);
+        assertTrue(minExpResult <= result && result <= maxExpResult);
+        
+        //Test 4 - Boundary
+        System.out.println("testGrowPopulation #4");
+        growPop.setPopulation(100);
+        minExpResult = 101;
+        maxExpResult = 105;
+        result = CropControl.growPopulation(growPop);
+        assertTrue(minExpResult <= result && result <= maxExpResult);
+    }
+    
+    /**
+     * Test of numStarved method, of class CropControl.
+     */
+    @Test
+    public void testCalcStarved () {
+        //Test 1 - Valid
+        System.out.println("testCalcStarved #1");
+        CropData decrPop = new CropData();
+        decrPop.setWheatForPeople(2000);
+        decrPop.setPopulation(105);
+        int expResult = 100;
+        int result = CropControl.calcStarved(decrPop);
+        assertEquals(expResult, result);
+        
+        //Test 2 - Invalid
+        System.out.println("testCalcStarved #2");
+        decrPop.setWheatForPeople(-200);
+        decrPop.setPopulation(105);
+        expResult = -1;
+        result = CropControl.calcStarved(decrPop);
+        assertEquals(expResult, result);
+        
+        //Test 3 - Boundary
+        System.out.println("testCalcStarved #3");
+        decrPop.setWheatForPeople(2200);
+        decrPop.setPopulation(105);
+        expResult = 105;
+        result = CropControl.calcStarved(decrPop);
+        assertEquals(expResult, result);
+        
+        //Test 4 - Boundary
+        System.out.println("testCalcStarved #4");
+        decrPop.setWheatForPeople(0);
+        decrPop.setPopulation(105);
+        expResult = 0;
+        result = CropControl.calcStarved(decrPop);
+        assertEquals(expResult, result);
+        
+        //Test 5 - Boundary
+        System.out.println("testCalcStarved #5");
+        decrPop.setWheatForPeople(2100);
+        decrPop.setPopulation(105);
+        expResult = 105;
+        result = CropControl.calcStarved(decrPop);
+        assertEquals(expResult, result);        
+    }    
 }

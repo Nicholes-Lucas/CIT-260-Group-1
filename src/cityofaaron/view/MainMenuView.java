@@ -9,8 +9,7 @@ import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 import cityofaaron.model.*;
 
-public class MainMenuView extends MenuView{
-  
+public class MainMenuView extends MenuView{  
     
     // The MainMenuView constructor
     // Purpose: Initialize the menu data
@@ -73,7 +72,8 @@ public class MainMenuView extends MenuView{
         CityOfAaron.setTheGame(theGame);
         
         // Display the Banner Page.
-        System.out.println("\nWelcome to the city of Aaron. "
+        System.out.println("\nWelcome to the city of Aaron! "
+                + "\n"
                 + "\nYou have been summoned here by the High Priest "
                 + "to assume your role as ruler of the city. "
                 + "\nYour responsibility is to buy and sell land, determine "
@@ -142,7 +142,7 @@ public class MainMenuView extends MenuView{
     // ===================================     
     public void displayHelpMenuView() {
         HelpMenuView hmv = new HelpMenuView();
-     hmv.displayMenu();
+        hmv.displayMenu();
         System.out.println("\nDisplay help menu option selected.");
     }
     

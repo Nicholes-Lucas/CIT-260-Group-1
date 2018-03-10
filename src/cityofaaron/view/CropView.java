@@ -6,8 +6,7 @@ import cityofaaron.control.*;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 
-/**
- *
+/*
  * @author Lucas Nicholes <nic16020@byui.edu>
  */
 public class CropView {
@@ -29,8 +28,8 @@ public class CropView {
         int price = CropControl.calcLandCost();
 
         // Prompt the user to enter the number of acres to buy
-        System.out.format("Land is selling for %d bushels per acre.%n",price);
-        System.out.print("\nHow many acres of land do you wish to buy? ");
+        System.out.format("\nLand is selling for %d bushels per acre.%n",price);
+        System.out.print("How many acres of land do you wish to buy? ");
 
         //  Get the user’s input and save it.
         int toBuy;
@@ -51,9 +50,9 @@ public class CropView {
         int wheatStore = cropData.getWheatInStore();
 
         // Ask the user how many bushels of wheat they want to give to the people?
-        System.out.format("You have" + wheatStore + "wheat left in store.");
+        System.out.print("\nIt takes 20 bushels of wheat to feed each person.");
+        System.out.format("\nYou have " + wheatStore + " bushels of wheat left in store.");
         System.out.print("\nHow many bushels of wheat do you want to give to the people? ");
-       
 
         //  Get the user’s input and save it.
         int toGive;
@@ -64,7 +63,8 @@ public class CropView {
         CropControl.feedPeople(toGive, cropData);
     }
     
-    // The plantCropsView method by Lucas Nicholes
+    // Lucas Nicholes
+    // The plantCropsView method
     // Purpose: interface with the user input for planting crops
     // Parameters: none
     // Returns: none
@@ -81,32 +81,7 @@ public class CropView {
         // Call the buyLand() method in the control layer to buy the land
         CropControl.plantCrops(toPlant, cropData);
     }
-    
-    // The runCropsView method()by Lucas Nicholes?
-    // Purpose: runs the City of Aaron game
-    // Parameters: none
-    // Returns: none
-    public static void runCropsView()
-    {
-        // call the buyLandView() method
-        buyLandView();
-        
-        //call the  feedPeopleView(); method
-         feedPeopleView();
-         
-         //call the plantCropsView(); method
-         plantCropsView();
-         
-         // call the sellLandView() method
-        sellLandView();
-        
-         // call the cropReportView(); method
-         cropReportView();
-
-        // add calls to the other crop view methods
-        // as they are written
-    }
-    
+          
     // Susan Peay
     // The sellLandView method
     // Purpose: interface with the user input for Selling Land
@@ -117,23 +92,43 @@ public class CropView {
         int owned = cropData.getAcresOwned();
         
         // Ask the user "how many acres of new land do you want to sell?"
-        System.out.format("You have" + owned + "acres of land.");
-        System.out.print("\nHow many acres of new land do you want to sell?");
+        System.out.format("%nYou have " + owned + " acres of land.");
+        System.out.print("\nHow many acres of new land do you want to sell? ");
 
         //  Get the user’s input and save it.
         int toSell;
         toSell = keyboard.nextInt();
-
+        
         // Call the sellLand() method in the control layer to sell the land
         CropControl.sellLand(owned, toSell, cropData);
+    }       
+    
+    // Lucas Nicholes
+    // The showStarvedView method
+    // Purpose: To display to the player a report of the number of 
+    //   people who have starved.
+    public static void showStarvedView() {
+        int year = cropData.getYear();
+        int pop = cropData.getPopulation();
+        
+        // Display how many people have starved 
+        CropControl.calcStarved(cropData);
+        int num = cropData.getNumStarved();
+        
+        if (num > pop/2) {
+            System.out.format("%nIn Year " + year + ", " + num + " people have starved."
+             + "%n"
+             + "%nDue to your severe negligence, you have been thrown out of office!"
+             + "%nGame Over%n");            
+             
+            MainMenuView mmv = new MainMenuView();
+            mmv.displayMenu();        
+        }
     }
-       
     
     // Kristina Plauche
     // The cropReport display
-    // Purpose: To display to the player a report of the current statistics. 
-    
-
+    // Purpose: To display to the player a report of the current statistics.
     public static void cropReportView() {
         // The year number 
         int year = cropData.getYear();
@@ -169,10 +164,42 @@ public class CropView {
         
         // The number of bushels of wheat in store
         int wheatStorage = cropData.getWheatInStore();
-        System.out.format("Wheat in Store: " + wheatStorage + "\n");
-                
+        System.out.format("Wheat in Store: " + wheatStorage + "\n");        
+    }
+    
+    // The runCropsView method()by Lucas Nicholes
+    // Purpose: runs the City of Aaron game
+    // Parameters: none
+    // Returns: none
+    public static void runCropsView()
+    {
+        // display cropReportView() at beginning of game
+        cropReportView();
         
-}
+        // call the buyLandView() method
+        buyLandView();
+        
+        // call the sellLandView() method
+        sellLandView();
+        
+        // call the  feedPeopleView() method
+        feedPeopleView();
+         
+        // call the plantCropsView() method
+        plantCropsView();     
+        
+        // call the payOfferingsView() method
+        //payOfferingsView();
+        
+        // call the showStarvedView;
+        showStarvedView();
+        
+        // call the cropReportView() method
+        cropReportView();
+
+        // add calls to the other crop view methods
+        // as they are written
+    }
 
 
     
