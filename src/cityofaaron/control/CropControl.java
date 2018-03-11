@@ -292,4 +292,40 @@ public class CropControl {
         //return numStarved
         return numStarved;
     }
+    
+
+    /**
+     * @author Susan Peay
+     * Purpose: store a user inputted value for (offering)
+     * @param toOffer2
+     * @param cropData
+     * pre-conditions: must be positive, and <= 100
+     * @return the number the user inputted
+     */
+    
+    public static int setOffering(int toOffer2, CropData cropData){
+        // If perToOffer <0, return -1        
+        if (toOffer2 < 0){
+            return -1;
+        }
+        // if offering > 100, return -1
+        if (toOffer2 > 100)  {
+            return -1;
+        }
+        
+        //save number into the variable offering
+        cropData.setOffering(toOffer2);
+          
+        // return (offering)
+        return toOffer2;
+    }
+
+    static int setOffering(int toOffer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    static int setOffering(CropData theOffering) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+ 
 }

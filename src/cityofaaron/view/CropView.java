@@ -91,9 +91,9 @@ public class CropView {
     {
         int owned = cropData.getAcresOwned();
         
-        // Ask the user "how many acres of new land do you want to sell?"
+        // Ask the user "how many acres of land do you want to sell?"
         System.out.format("%nYou have " + owned + " acres of land.");
-        System.out.print("\nHow many acres of new land do you want to sell? ");
+        System.out.print("\nHow many acres of land do you want to sell? ");
 
         //  Get the user’s input and save it.
         int toSell;
@@ -102,7 +102,7 @@ public class CropView {
         // Call the sellLand() method in the control layer to sell the land
         CropControl.sellLand(owned, toSell, cropData);
     }       
-    
+       
     // Lucas Nicholes
     // The showStarvedView method
     // Purpose: To display to the player a report of the number of 
@@ -189,7 +189,7 @@ public class CropView {
         plantCropsView();     
         
         // call the payOfferingsView() method
-        //payOfferingsView();
+        payOfferingsView();
         
         // call the showStarvedView;
         showStarvedView();
@@ -200,7 +200,28 @@ public class CropView {
         // add calls to the other crop view methods
         // as they are written
     }
+    
 
-
+    /**
+     * @author Susan Peay
+     * The payOfferingsView 
+     * Purpose: to get user input for (offerings) variable
+     */
+    public static void payOfferingsView() {
+        int wheaties = cropData.getHarvest();
+        //Ask the user "What percentage of their harvest they want to pay in 
+        // tithes and offerings?
+        
+        System.out.format("%nYou have harvested " + wheaties + " bushels of wheat.");
+        System.out.print("\nWhat percentage of the harvest do you want to pay in tithes and offerings? ");
+        
+        //Get the user's input
+        int toOffer;
+        toOffer = keyboard.nextInt();
+        
+        //call the setOffering() method in the control layer
+        CropControl.setOffering(toOffer, cropData);
+        
+    }
     
 }
