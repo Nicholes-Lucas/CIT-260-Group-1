@@ -11,8 +11,7 @@ import cityofaaron.CityOfAaron;
  */
 
 public class GameMenuView extends MenuView {
- 
-    
+     
     // The GameMenuView constructor
     // Purpose: Initialize the menu data
     // Parameters: none
@@ -28,7 +27,7 @@ public class GameMenuView extends MenuView {
                        " 1 - View the map\n" +
                        " 2 - View/Print a list\n" +
                        " 3 - Move to a new location\n" +
-                       " 4 - manage the Crops\n" +
+                       " 4 - Manage the Crops\n" +
                        " 5 - Return to the Main menu\n",
         5);
   } 
@@ -93,8 +92,6 @@ public class GameMenuView extends MenuView {
     // ===================================     
     public void manageCrops() {
         CropView.runCropsView();
-
-        System.out.println("\n4 - Manage Crops option selected.");
     }
     
     // The displayMainMenu method
@@ -104,8 +101,5 @@ public class GameMenuView extends MenuView {
     // ===================================     
     public void displayMainMenu() {
         System.out.println("\n5 - Display Main Menu option selected.");
-    } 
-        
-    
-    
+    }    
 }

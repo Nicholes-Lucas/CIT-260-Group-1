@@ -34,7 +34,7 @@ public class HelpMenuView extends MenuView {
                        " 4 - How do I move to another location?\n" +
                        " 5 - How do I display a list of animals, provisions and tools in the city storehouse?\n" +
                        " 6 - Back to the Main Menu\n",
-                5);
+                6);
 
     }
     
