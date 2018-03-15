@@ -6,8 +6,7 @@
 package cityofaaron.view;
 
 import java.util.Scanner;
-import cityofaaron.CityOfAaron;
-import cityofaaron.model.*;
+import cityofaaron.control.*;
 
 public class MainMenuView extends MenuView{  
     
@@ -27,13 +26,9 @@ public class MainMenuView extends MenuView{
                        " 3 - Get help on playing the game\n" +
                        " 4 - Save game\n" +
                        " 5 - Quit\n",
-                5);
-
-   
+                5);   
     }
-    
- 
-    
+       
     // The doAction method
     // Purpose: performs the selected action
     // Parameters: none
@@ -63,65 +58,36 @@ public class MainMenuView extends MenuView{
     // Parameters: none
     // Returns: none
     // ===================================     
-    public void startNewGame() {
-    
-        //Create a new Game object.
-        Game theGame = new Game();
+    public void startNewGame()
+    {        
+        // Show banner page
+        System.out.println(
+            "\n********************************************************\n" +
+            "* Welcome to the City of Aaron. You have been summoned *\n" +
+            "* by the High Priest to assume your role as ruler of   *\n" +
+            "* the city. Your responsibility is to buy land, sell   *\n" +
+            "* land, determine how much wheat to plant each year,   *\n" +
+            "* and how much to set aside to feed the people. You    *\n" +
+            "* will also be required to pay an annual tithe on the  *\n" +
+            "* that is harvested. If you fail to provide            *\n" +
+            "* enough wheat for the people to eat, people will die  *\n" +
+            "* and your workforce will be diminished. Plan very     *\n" +
+            "* carefully or you may find yourself in trouble with   *\n" +
+            "* the people. And oh, watch out for plagues and rats!  *\n" +
+            "********************************************************\n");
         
-        // Save a reference to it in the GameProject class.
-        CityOfAaron.setTheGame(theGame);
-        
-        // Display the Banner Page.
-        System.out.println("\nWelcome to the city of Aaron! "
-                + "\n"
-                + "\nYou have been summoned here by the High Priest "
-                + "to assume your role as ruler of the city. "
-                + "\nYour responsibility is to buy and sell land, determine "
-                + "how much wheat to plant each year \nand how much to "
-                + "set aside to feed your people. In addition, it will "
-                + "be your job to pay \nan annual tithe on the wheat that "
-                + "is harvested. If you fail to provide enough wheat for "
-                + "\nthe people, people will starve,  some people will die, "
-                + "and your workforce will be \ndiminished. Plan carefully. "
-                + "And Oh, there is always a danger of rats eating your wheat.");
-        
-        // Create a new Player object
-        Player thePlayer = new Player();
-        
-        // Prompt for and get the user’s name.
+        // Get player name, create player object, and save it in the Game
         String name;
         System.out.println("\nPlease type in your first name: ");
         name = keyboard.next();
-    
-        // Save the user’s name in the Player object    
-        thePlayer.setName(name);
-   
-        // Save a reference to the player object in the Game object
-        theGame.setThePlayer(thePlayer);
+                    
+        // welcome message
+        System.out.println("\nWelcome " + name + ", have fun playing.");
         
-        // Display a welcome message
-         System.out.println("\nWelcome " + name + " have fun.");
-         
-        // Display the Game menu
+        // call the createNewGame( ) method. Pass the name as a parameter
+        GameControl.createNewGame(name);
         
-        // Create the CropData object, 
-        // initialize it and save a reference to it in the Game
-        CropData theCrops = new CropData();
-        theCrops.setYear(0);
-        theCrops.setPopulation(100);
-        theCrops.setNewPeople(5);
-        theCrops.setCropYield(3);
-        theCrops.setNumberWhoDied(0);
-        theCrops.setOffering(10);
-        theCrops.setWheatInStore(2700);
-        theCrops.setAcresOwned(1000);
-        theCrops.setAcresPlanted(1000);
-        theCrops.setHarvest(3000);
-        theCrops.setOfferingBushels(300);
-        theCrops.setAcresPlanted(1000); 
-        
-        theGame.setCropData(theCrops);
-        
+        //show the game menu
         GameMenuView gmv = new GameMenuView();
         gmv.displayMenu();
     } 

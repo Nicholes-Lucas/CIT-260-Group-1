@@ -208,7 +208,7 @@ public class CropView {
      * Purpose: to get user input for (offerings) variable
      */
     public static void payOfferingsView() {
-        int wheaties = cropData.getHarvest();
+        int wheaties = cropData.getHarvestAfterOffering();
         //Ask the user "What percentage of their harvest they want to pay in 
         // tithes and offerings?
         
@@ -220,8 +220,6 @@ public class CropView {
         toOffer = keyboard.nextInt();
         
         //call the setOffering() method in the control layer
-        CropControl.setOffering(toOffer, cropData);
-        
-    }
-    
+        CropControl.setOffering(toOffer, cropData);        
+    }    
 }

@@ -228,7 +228,6 @@ public class CropControl {
     // Parameters: none
     // Returns: the number of newPeople in the city of Aaron
     // Pre-conditions: population must be positive
-
     public static int growPopulation(CropData cropData) {
         int population = cropData.getPopulation();
 
@@ -255,8 +254,7 @@ public class CropControl {
     // Parameters: none
     // Returns: the number of numStarved in the city of Aaron
     // Pre-conditions: wheatForPeople must be positive
-    // and the numStarved must be positive
-    
+    // and the numStarved must be positive    
     public static int calcStarved(CropData cropData) {
         int wheat = cropData.getWheatForPeople();
         int population = cropData.getPopulation();
@@ -293,16 +291,84 @@ public class CropControl {
         return numStarved;
     }
     
+    // The harvestCrops method
+    // Purpose: To determine wheat harvested
+    // Parameters: None
+    // Returns: The number of bushels harvested
+    // Pre-conditions: None
+    public static int harvestCrops(CropData cropData) {
+        int acres = cropData.getAcresPlanted();
+        int offering = cropData.getOffering();
+        int wheat = cropData.getWheatInStore();
+        int harvest = 0;
+        int yield = 1;
 
-    /**
-     * @author Susan Peay
-     * Purpose: store a user inputted value for (offering)
-     * @param toOffer2
-     * @param cropData
-     * pre-conditions: must be positive, and <= 100
-     * @return the number the user inputted
-     */
+        // if offering is < 8%, yield between 1 and 3 bushels/acre
+        if (offering < 8) {
+            yield = (random.nextInt(3)+1);
+        }
+
+        // if offering is between < 8% and 12% inclusive, yield between 2 and 4 bushels/acre
+        if (offering >= 8 && offering <= 12) {
+            yield = (random.nextInt(3)+2);
+        }
+
+        // if offering is > 12%, yield between 2 and 5 bushels/acre
+        if (offering > 12) {
+            yield  = (random.nextInt(4)+2);
+        }
+
+        // harvest = acres * yield
+        harvest = acres * yield;
+        cropData.setHarvest(harvest);
+
+        // wheatInStore = wheatInStore + harvest
+        wheat += harvest;
+        cropData.setWheatInStore(wheat);
+        
+        // return bushels eatenByRats
+        return harvest;
+    }
+        
+    // The payOffering method
+    // Purpose: To pay offerings
+    // Parameters: offering
+    // Returns: The number of bushels paid as an offering
+    // Pre-conditions: offering must be positive
+    // and not greater than 100
+    public static int payOffering(int offering, CropData cropData) {
+        int harvest = cropData.getHarvest();
+        int wheat = cropData.getWheatInStore();
     
+        // offering must be positive and less than 100
+        if (offering < 0 || offering > 100)
+            return -1;
+        
+        // find offering in bushels of wheat
+        int bushels = harvest * offering / 100;
+        
+        // save offering values
+        cropData.setOffering(offering);
+        cropData.setOfferingBushels(bushels);
+        
+        // adjust harvest
+        harvest -= bushels;
+        cropData.setHarvestAfterOffering(harvest);
+                
+        // adjust wheatInStore
+        wheat -= bushels;   
+        cropData.setWheatInStore(wheat);
+        
+        // return bushels offered
+        return bushels;
+    }
+
+    // author Susan Peay
+    // Purpose: store a user inputted value for (offering)
+    // Parameters:toOffer2
+    // and cropData
+    // Pre-conditions: must be positive, and <= 100
+    // and return the number the user inputted    
     public static int setOffering(int toOffer2, CropData cropData){
         // If perToOffer <0, return -1        
         if (toOffer2 < 0){

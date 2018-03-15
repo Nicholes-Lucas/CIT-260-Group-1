@@ -18,42 +18,42 @@ public class GameMenuView extends MenuView {
     // Returns: none
     // ===================================
     
-       public GameMenuView(){   
+    public GameMenuView(){   
     
         super("\n" +
-                       "**********************************\n" +
-                       "* CITY OF AARON: GAME MENU VIEW  *\n" +
-                       "**********************************\n" +
-                       " 1 - View the map\n" +
-                       " 2 - View/Print a list\n" +
-                       " 3 - Move to a new location\n" +
-                       " 4 - Manage the Crops\n" +
-                       " 5 - Return to the Main menu\n",
+                    "**********************************\n" +
+                    "* CITY OF AARON: GAME MENU VIEW  *\n" +
+                    "**********************************\n" +
+                    " 1 - View the map\n" +
+                    " 2 - View/Print a list\n" +
+                    " 3 - Move to a new location\n" +
+                    " 4 - Manage the Crops\n" +
+                    " 5 - Return to the Main menu\n",
         5);
-  } 
+    } 
        
     // The doAction method
     // Purpose: performs the selected action
     // Parameters: none
     // Returns: none
     // ===================================  
-         @Override public void doAction(int option){
-        switch(option) {
-            case 1: // View the Map
-                viewMap();
-                break;
-            case 2: // View/Print a list
-                viewList();
-                break;
-            case 3: // Move to a new location
-                moveToNewLocation();
-                break;
-            case 4: // Manage the crops
-                manageCrops();
-                break;
-            case 5: // Return to the Main Menu
-                displayMainMenu();
-                break;
+        @Override public void doAction(int option){
+            switch(option) {
+                case 1: // View the Map
+                    viewMap();
+                    break;
+                case 2: // View/Print a list
+                    viewList();
+                    break;
+                case 3: // Move to a new location
+                    moveToNewLocation();
+                    break;
+                case 4: // Manage the crops
+                    manageCrops();
+                    break;
+                case 5: // Return to the Main Menu
+                    displayMainMenu();
+                    break;
             }
         }
         
