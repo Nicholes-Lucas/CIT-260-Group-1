@@ -384,14 +384,5 @@ public class CropControl {
           
         // return (offering)
         return toOffer2;
-    }
-
-    static int setOffering(int toOffer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    static int setOffering(CropData theOffering) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
- 
+    } 
 }

@@ -60,10 +60,10 @@ public class GameControl {
      public static void createAnimalList() {
         ArrayList<ListItem> animals = new ArrayList<ListItem>();
         
-        animals.add(new ListItem("cows", 12));
-        animals.add(new ListItem("horses", 3));
-        animals.add(new ListItem("pigs", 7));
-        animals.add(new ListItem("goats", 4));
+        animals.add(new ListItem("Cows", 12));
+        animals.add(new ListItem("Horses", 3));
+        animals.add(new ListItem("Pigs", 7));
+        animals.add(new ListItem("Goats", 4));
        
         theGame.setAnimals(animals);
     }    
@@ -72,10 +72,10 @@ public class GameControl {
     public static void createToolList() {
         ArrayList<ListItem> tools = new ArrayList<ListItem>();
         
-        tools.add(new ListItem("hammer", 6));
-        tools.add(new ListItem("shovel", 8));
-        tools.add(new ListItem("rake", 9));
-        tools.add(new ListItem("hoe", 12));
+        tools.add(new ListItem("Hammer", 6));
+        tools.add(new ListItem("Shovel", 8));
+        tools.add(new ListItem("Rake", 9));
+        tools.add(new ListItem("Hoe", 12));
        
         theGame.setTools(tools);
     }

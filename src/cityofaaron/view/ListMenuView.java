@@ -55,7 +55,7 @@ public class ListMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void listAnimals() {
-        System.out.println("\nAnimal list selected.");
+        ListView.listAnimalsView();
     }
     
     // The listTools method
