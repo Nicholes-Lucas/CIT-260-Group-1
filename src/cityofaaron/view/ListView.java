@@ -18,6 +18,7 @@ public class ListView {
     // Get reference to the Game object and the Map object
     private static Game theGame = CityOfAaron.getTheGame();
     private static ArrayList<ListItem> theAnimals = theGame.getAnimals();
+    private static ArrayList<ListItem> theTools = theGame.getTools();
     
     public static void listAnimalsView() {
         
@@ -28,5 +29,18 @@ public class ListView {
             System.out.println("\n\tItem: " + animal.getName() +
                                "\n\tQuantity: " + animal.getNumber());
         }        
-    }    
+    } 
+    
+
+    // @author Susan Peay
+    public static void listToolsView() {
+            
+        System.out.println("\nList of Tools in Storehouse: ");
+        for (int i = 0; i < theTools.size(); i++) {
+            
+            ListItem tools = theTools.get(i);
+            System.out.println("\n\tItem: " + tools.getName() +
+                               "\n\tQuantity: " + tools.getNumber());
+        }        
+    }
 }
