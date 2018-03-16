@@ -73,7 +73,7 @@ public class ListMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void listProvisions() {
-        System.out.println("\nProvisions list selected.");
+        ListView.listProvisionsView();
     }
     
     // The listTeam method

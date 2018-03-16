@@ -19,6 +19,7 @@ public class ListView {
     private static Game theGame = CityOfAaron.getTheGame();
     private static ArrayList<ListItem> theAnimals = theGame.getAnimals();
     private static ArrayList<ListItem> theTools = theGame.getTools();
+    private static ArrayList<ListItem> theProvisions = theGame.getProvisions();
     
     public static void listAnimalsView() {
         
@@ -43,4 +44,17 @@ public class ListView {
                                "\n\tQuantity: " + tools.getNumber());
         }        
     }
+    
+    //@author Kristina Plauche
+        public static void listProvisionsView() {
+            
+        System.out.println("\nList of Provisions in Storehouse: ");
+        for (int i = 0; i < theProvisions.size(); i++) {
+            
+            ListItem provisions = theProvisions.get(i);
+            System.out.println("\n\tItem: " + provisions.getName() +
+                               "\n\tQuantity: " + provisions.getNumber());
+        }        
+    }
+    
 }
