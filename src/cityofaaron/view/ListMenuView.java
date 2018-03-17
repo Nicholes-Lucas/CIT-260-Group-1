@@ -25,8 +25,7 @@ public class ListMenuView extends MenuView {
                        " 5 - Return to the Game menu\n",
                        5);
 
-    }
-    
+    }    
    
      @Override public void doAction(int option){
         if (option == 1) {
@@ -82,7 +81,7 @@ public class ListMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void listTeam() {
-        System.out.println("\nList of team members selected.");
+        ListView.listGameAuthors();
     }
     
     // The displayGameMenu method

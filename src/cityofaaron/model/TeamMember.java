@@ -12,9 +12,9 @@ import java.io.Serializable;
  */
 public enum TeamMember {
     
-    Lucas("Lucas Nicholes", "theMagnifcent"),
-    Susan("Susan Peay", "thePatient"),
-    Kristina("Kristina Plauche", "theIntelligent");     
+    Lucas("Lucas Nicholes", "The Magnificent"),
+    Susan("Susan Peay", "The Patient"),
+    Kristina("Kristina Plauche", "The Intelligent");     
     
     private String name;
     private String title;

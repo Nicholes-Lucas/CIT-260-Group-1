@@ -63,7 +63,7 @@ public class GameMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void viewMap() {
-        System.out.println("\n1 - View the map option selected");
+        ListView.showMapView();
     }
     
     // The viewList method
@@ -82,7 +82,7 @@ public class GameMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void moveToNewLocation() {
-        System.out.println("\n3 - Move to a new location option selected.");
+        ListView.showLocationView();
     }
     
     // The manageCrops method
