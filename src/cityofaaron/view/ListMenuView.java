@@ -63,7 +63,7 @@ public class ListMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void listTools() {
-        System.out.println("\nTool list selected.");
+        ListView.listToolsView();
     }
     
     // The listProvisions method
@@ -72,7 +72,7 @@ public class ListMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void listProvisions() {
-        System.out.println("\nProvisions list selected.");
+        ListView.listProvisionsView();
     }
     
     // The listTeam method

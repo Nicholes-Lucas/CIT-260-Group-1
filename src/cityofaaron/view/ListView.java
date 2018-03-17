@@ -2,13 +2,12 @@
 package cityofaaron.view;
 
 import cityofaaron.model.*;
-import cityofaaron.control.*;
 import cityofaaron.CityOfAaron;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
- * @author Lucas Nicholes <nic16020@byui.edu>
+ * @author Lucas Nicholes 
  */
 public class ListView {
     
@@ -18,6 +17,8 @@ public class ListView {
     // Get reference to the Game object and the Map object
     private static Game theGame = CityOfAaron.getTheGame();
     private static ArrayList<ListItem> theAnimals = theGame.getAnimals();
+    private static ArrayList<ListItem> theTools = theGame.getTools();
+    private static ArrayList<ListItem> theProvisions = theGame.getProvisions();
     private static Map theMap = theGame.getTheMap();
     
     public static void listAnimalsView() {
@@ -28,6 +29,30 @@ public class ListView {
             ListItem animal = theAnimals.get(i);
             System.out.println("\n\tItem: " + animal.getName() +
                                "\n\tQuantity: " + animal.getNumber());
+        }        
+    }
+    
+    // @author Susan Peay
+    public static void listToolsView() {
+            
+        System.out.println("\nList of Tools in Storehouse: ");
+        for (int i = 0; i < theTools.size(); i++) {
+            
+            ListItem tools = theTools.get(i);
+            System.out.println("\n\tItem: " + tools.getName() +
+                               "\n\tQuantity: " + tools.getNumber());
+        }        
+    }
+    
+    //@author Kristina Plauche
+    public static void listProvisionsView() {
+            
+        System.out.println("\nList of Provisions in Storehouse: ");
+        for (int i = 0; i < theProvisions.size(); i++) {
+            
+            ListItem provisions = theProvisions.get(i);
+            System.out.println("\n\tItem: " + provisions.getName() +
+                               "\n\tQuantity: " + provisions.getNumber());
         }        
     }
     
@@ -101,4 +126,4 @@ public class ListView {
         System.out.println("\nDescription: " + theLocation.getDescription() +
                            "\nSymbol: " + theLocation.getSymbol());
     }
-}
+} 
