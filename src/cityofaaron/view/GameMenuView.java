@@ -100,6 +100,6 @@ public class GameMenuView extends MenuView {
     // Returns: none
     // ===================================     
     public void displayMainMenu() {
-        System.out.println("\n5 - Display Main Menu option selected.");
+        System.out.println("\nBack to Main Menu. ");
     }    
 }

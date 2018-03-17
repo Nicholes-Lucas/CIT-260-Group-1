@@ -62,7 +62,7 @@ public class ListView {
         TeamMember[] authors = TeamMember.values();
         
         for (TeamMember author : authors) {
-            System.out.println(author.getName() + ", " + author.getTitle());
+            System.out.println("\n\t" + author.getName() + ", " + author.getTitle());
         }
         
     }
