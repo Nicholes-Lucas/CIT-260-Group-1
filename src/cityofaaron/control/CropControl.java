@@ -82,17 +82,17 @@ public class CropControl {
     // Returns: the number of bushels of wheat in storage after feeding the people
     // Pre-conditions: number of feeding bushels must be >=0
     // and <= the number of bushels of wheat in storage
-    public static int feedPeople(int wheatToFeed, CropData cropData){
+    public static void feedPeople(int wheatToFeed, CropData cropData) throws CropException{
         int wheat2 = cropData.getWheatInStore();
 
 
         // if wheatToFeed < 0, return -1
         if (wheatToFeed < 0) {
-        return -1;
+        throw new CropException("A negative value was input");
         }
         // if wheatToFeed > wheatInStore,  return -1
         if (wheatToFeed > wheat2) {
-            return -1;
+            throw new CropException("Wheat to feed people must be greater than the wheat in store.");
         }
         // wheatInStore = wheatInStore - wheatToFeed
         wheat2 -= wheatToFeed;
@@ -100,9 +100,7 @@ public class CropControl {
         // wheatToFeed = wheatToFeed
         cropData.setWheatForPeople(wheatToFeed);
         cropData.setWheatInStore(wheat2);
-        // return wheatInStore
-
-        return wheat2;
+      
     }
 
     /*

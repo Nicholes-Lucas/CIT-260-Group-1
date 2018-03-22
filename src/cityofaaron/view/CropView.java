@@ -57,7 +57,8 @@ public class CropView {
         
     }
     
-    // The feedPeopleView method
+    // Kristina Plauche
+    // The feedPeopleView method    
     // Purpose: interface with the user input for buying wheat to feed people
     // Parameters: none
     // Returns: wheat left in store
@@ -69,16 +70,32 @@ public class CropView {
         // Ask the user how many bushels of wheat they want to give to the people?
         System.out.print("\nIt takes 20 bushels of wheat to feed each person.");
         System.out.format("\nYou have " + wheatStore + " bushels of wheat left in store.");
-        System.out.print("\nHow many bushels of wheat do you want to give to the people? ");
-
-        //  Get the user’s input and save it.
+        
+       
         int toGive;
-        toGive = keyboard.nextInt();
-
-        // Call the feedPeople() method in the control layer to feed the people
+         boolean paramsNotOkay;
+ do {
+     paramsNotOkay = false;
+     System.out.print("\nHow many bushels of wheat do you want to give to the people? ");
+      //  Get the user’s input and save it.
+     toGive = keyboard.nextInt();
+ try {
+         // Call the feedPeople() method in the control layer to feed the people
         
         CropControl.feedPeople(toGive, cropData);
-    }
+     }
+ catch(CropException e)
+        {
+             System.out.println("I am sorry, I cannot do this.");
+             System.out.println(e.getMessage());
+             paramsNotOkay = true;
+        }
+} while(paramsNotOkay);
+ }
+        
+
+        
+    
     
     // Lucas Nicholes
     // The plantCropsView method
