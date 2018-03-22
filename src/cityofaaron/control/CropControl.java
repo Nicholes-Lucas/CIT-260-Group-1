@@ -3,6 +3,7 @@ package cityofaaron.control;
 
 import cityofaaron.model.CropData;
 import java.util.Random;
+import cityofaaron.exceptions.*;
 
 /**
  *
@@ -189,7 +190,7 @@ public class CropControl {
     //    Amount of wheat >= number of acres * buy price 
     // 3. Amount of population must be enough to tend land
     //    Population 10 >= for each acre
-    public static int buyLand(int landPrice, int acresToBuy, CropData cropData){
+    public static void buyLand(int landPrice, int acresToBuy, CropData cropData)throws CropException {
         int wheat = cropData.getWheatInStore();
         int owned = cropData.getAcresOwned();
         int population = cropData.getPopulation();
@@ -197,15 +198,15 @@ public class CropControl {
 
         //if acresToBuy <0, return -1
         if(acresToBuy < 0)
-            return -1;
+            throw new CropException("A negative value was entered.");
 
         //if wheatInStore < (acresToBuy * landPrice) return -1
         if((acresToBuy * landPrice) > wheat)
-            return -1;
+            throw new CropException("There is insufficient wheat to buy this much land.");
 
         //if population cannot tend new land, return -1
         if(population < (acresToBuy + owned)/10)
-            return -1;
+            throw new CropException("There are not enough people to tend this much land.");
 
         //acresOwned = acresOwned+acresToBuy
         owned += acresToBuy;
@@ -213,10 +214,8 @@ public class CropControl {
 
         //wheatInStore = wheatInStore - (acresToBuy*landPrice)
         wheat -= (acresToBuy*landPrice);
-        cropData.setWheatInStore(wheat);
-
-        //return acresOwned
-        return owned;
+        cropData.setWheatInStore(wheat);    
+        
     }
 
     /*
