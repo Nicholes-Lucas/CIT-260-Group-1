@@ -23,6 +23,7 @@ public class CropData implements Serializable {
     private int numStarved;
     private int eatenByRats;
     private int wheatForPeople;
+    private int landPrice;
 
     public CropData() {
     }
@@ -154,5 +155,12 @@ public class CropData implements Serializable {
     public void setWheatForPeople(int wheatForPeople) {
         this.wheatForPeople = wheatForPeople;
     }
+    
+    public int getLandPrice() {
+        return landPrice;
+    }
 
+    public void setLandPrice(int landPrice) {
+        this.landPrice = landPrice;
+    }
 }

@@ -88,7 +88,7 @@ public class ListView {
                                  "4|  *   []    [] #### ~~ ~~|\n" +
                                  " |***** [][][][] #### ~~~ ~|\n" +
                                  " +-------------------------+\n"        
-        );        
+        );
     }
     
     public static void showLocationView() {
@@ -125,5 +125,19 @@ public class ListView {
         Location theLocation = theMap.getLocation(row, column);
         System.out.println("\nDescription: " + theLocation.getDescription() +
                            "\nSymbol: " + theLocation.getSymbol());
+    }
+    
+    public static void showLegendView() {
+        
+        //show map legend
+        System.out.println("\n" +
+                           "[ ] - City Complex\n" + 
+                           "### - Animal Pens\n" + 
+                           "... - Fallow Fields\n" +
+                           "!!! - Farmland\n" +
+                           "TTT - Forest\n" +
+                           "~~~ - River\n" +
+                           "HHH - Storehouse\n" +
+                           "*** - Temple\n");
     }
 } 

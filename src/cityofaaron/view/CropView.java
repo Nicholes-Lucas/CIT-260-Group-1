@@ -33,28 +33,23 @@ public class CropView {
 
         //  Get the user’s input and save it.
         int toBuy;
-         boolean paramsNotOkay;
- do
- {
-       paramsNotOkay = false;
-       System.out.print("\nHow many acres of land do you wish to buy? ");  
-       toBuy = keyboard.nextInt();
-       try
-       {
-           // Call the buyLand() method in the control layer to buy the land
-        
-        CropControl.buyLand(price, toBuy, cropData);
-       }
-       
-       catch(CropException e)
-        {
-             System.out.println("I am sorry, I cannot do this.");
-             System.out.println(e.getMessage());
-             paramsNotOkay = true;
-        }
-} while(paramsNotOkay);
-
-        
+        boolean paramsNotOkay;
+        do {
+            paramsNotOkay = false;
+            System.out.print("\nHow many acres of land do you wish to buy? ");  
+            toBuy = keyboard.nextInt();
+            try
+            {
+                // Call the buyLand() method in the control layer to buy the land        
+                CropControl.buyLand(price, toBuy, cropData);
+            }       
+            catch(CropException e)
+            {
+                System.out.println("I am sorry, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);        
     }
     
     // Kristina Plauche
@@ -70,32 +65,27 @@ public class CropView {
         // Ask the user how many bushels of wheat they want to give to the people?
         System.out.print("\nIt takes 20 bushels of wheat to feed each person.");
         System.out.format("\nYou have " + wheatStore + " bushels of wheat left in store.");
-        
-       
+               
         int toGive;
-         boolean paramsNotOkay;
- do {
-     paramsNotOkay = false;
-     System.out.print("\nHow many bushels of wheat do you want to give to the people? ");
-      //  Get the user’s input and save it.
-     toGive = keyboard.nextInt();
- try {
-         // Call the feedPeople() method in the control layer to feed the people
-        
-        CropControl.feedPeople(toGive, cropData);
-     }
- catch(CropException e)
-        {
-             System.out.println("I am sorry, I cannot do this.");
-             System.out.println(e.getMessage());
-             paramsNotOkay = true;
-        }
-} while(paramsNotOkay);
- }
-        
-
-        
-    
+        boolean paramsNotOkay;
+        do {
+            paramsNotOkay = false;
+            System.out.print("\nHow many bushels of wheat do you want to give to the people? ");
+            //  Get the user’s input and save it.
+            toGive = keyboard.nextInt();
+            try 
+            {
+                // Call the feedPeople() method in the control layer to feed the people        
+                CropControl.feedPeople(toGive, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);
+    }
     
     // Lucas Nicholes
     // The plantCropsView method
@@ -104,16 +94,29 @@ public class CropView {
     // Returns: none
     public static void plantCropsView()
     {
-        // Prompt the user to enter the amount of wheat to plant
         System.out.print("\nYou can plant 2 acres with one bushel of wheat.");
-        System.out.print("\nHow many acres of land do you want to plant? ");
-
-        //  Get the user’s input and save it.
-        int toPlant;
-        toPlant = keyboard.nextInt();
-
-        // Call the buyLand() method in the control layer to buy the land
-        CropControl.plantCrops(toPlant, cropData);
+        int toPlant;        
+        boolean paramsNotOkay;
+        do {
+            paramsNotOkay = false;
+            // Prompt the user to enter the amount of wheat to plant
+            System.out.print("\nHow many acres of land do you want to plant? ");
+            
+            //  Get the user’s input and save it.
+            toPlant = keyboard.nextInt();
+            
+            try 
+            {
+                // Call the buyLand() method in the control layer to buy the land
+                CropControl.plantCrops(toPlant, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);
     }
           
     // Susan Peay
@@ -124,36 +127,32 @@ public class CropView {
     public static void sellLandView()
     {
         int owned = cropData.getAcresOwned();
+        int landPrice = cropData.getLandPrice();
         
         // Ask the user "how many acres of land do you want to sell?"
         System.out.format("%nYou have " + owned + " acres of land.");
-        //System.out.print("\nHow many acres of land do you want to sell? ");
 
         //  Get the user’s input and save it.
-         int toSell;
-         boolean paramsNotOkay;
- do
- {
-       paramsNotOkay = false;
-       System.out.print("\nHow many acres of land do you wish to sell? ");  
-       toSell = keyboard.nextInt();
-       try
-       {
-           // Call the sellLand() method in the control layer to buy the land
-        
-        CropControl.sellLand(owned, toSell, cropData);
-       }
-       
-       catch(CropException e)
+        int toSell;
+        boolean paramsNotOkay;
+        do
         {
-             System.out.println("I am sorry, I cannot do this.");
-             System.out.println(e.getMessage());
-             paramsNotOkay = true;
-        }
-} while(paramsNotOkay);
-
-        
-    } 
+            paramsNotOkay = false;
+            System.out.print("\nHow many acres of land do you wish to sell? ");  
+            toSell = keyboard.nextInt();
+            try
+            {
+                // Call the sellLand() method in the control layer to buy the land
+                CropControl.sellLand(landPrice, toSell, cropData);
+            }       
+            catch(CropException e)
+            {
+                System.out.println("I am sorry, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);        
+    }
        
     // Lucas Nicholes
     // The showStarvedView method
@@ -238,40 +237,65 @@ public class CropView {
         feedPeopleView();
          
         // call the plantCropsView() method
-        plantCropsView();     
+        plantCropsView();
+        
+        // call the harvestCrops() method from the CropControl class
+        CropControl.harvestCrops(cropData);
         
         // call the payOfferingsView() method
         payOfferingsView();
         
+        // call the calcEatenByRats() method from the CropControl class
+        CropControl.calcEatenByRats(cropData);
+        
         // call the showStarvedView;
         showStarvedView();
         
+        // call the growPopulation() method from the CropControl class
+        CropControl.growPopulation(cropData);
+        
+        // increment year in game
+        int year = cropData.getYear();
+        cropData.setYear(++year);
+        
         // call the cropReportView() method
-        cropReportView();
+        cropReportView();                
 
         // add calls to the other crop view methods
         // as they are written
     }
     
-
     /**
      * @author Susan Peay
      * The payOfferingsView 
      * Purpose: to get user input for (offerings) variable
      */
     public static void payOfferingsView() {
-        int wheaties = cropData.getHarvestAfterOffering();
+        int wheaties = cropData.getHarvest();
         //Ask the user "What percentage of their harvest they want to pay in 
-        // tithes and offerings?
-        
+        // tithes and offerings?        
         System.out.format("%nYou have harvested " + wheaties + " bushels of wheat.");
-        System.out.print("\nWhat percentage of the harvest do you want to pay in tithes and offerings? ");
-        
-        //Get the user's input
         int toOffer;
-        toOffer = keyboard.nextInt();
+        boolean paramsNotOkay;
+        do
+        {
+            paramsNotOkay = false;
+            System.out.print("\nWhat percentage of the harvest do you want to pay in tithes and offerings? ");
         
-        //call the setOffering() method in the control layer
-        CropControl.setOffering(toOffer, cropData);        
+            //Get the user's input
+            toOffer = keyboard.nextInt();
+            
+            try
+            {
+                //call the setOffering() method in the control layer
+                CropControl.payOffering(toOffer, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);
     }    
 }

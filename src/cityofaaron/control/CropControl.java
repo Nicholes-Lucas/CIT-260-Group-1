@@ -41,8 +41,7 @@ public class CropControl {
         if (wheat < 0)
             return -1;
 
-        // if offering < 0 , return -1  
-        // if offering > 100, return -1
+        // if offering < 0 or > 100 , return -1  
         if (offering < 0 || offering > 100)
           return -1;
 
@@ -114,18 +113,18 @@ public class CropControl {
     // Pre-conditions: acres to plant must be positive
     // and <= the number of acres owned
     // and wheat to plant must be <= wheatInStore
-    public static int plantCrops(int acresToPlant, CropData cropData) {
+    public static void plantCrops(int acresToPlant, CropData cropData) throws CropException{
         int owned = cropData.getAcresOwned();
         int wheat = cropData.getWheatInStore();
 
         // if acresToPlant < 0, return -1
         if (acresToPlant < 0)
-            return -1;
+            throw new CropException("A negative value was input");
 
         // if acresToPlant > acresOwned,  return -1
         if (acresToPlant > owned)
-            return -1;
-
+            throw new CropException("You cannot plant more acres of land than you currently own.");
+        
         cropData.setAcresPlanted(acresToPlant);
 
         // wheatToPlant = acresToPlant / 2
@@ -133,14 +132,11 @@ public class CropControl {
 
         // if wheatToPlant > wheatInStore, return -1
         if (wheatToPlant > wheat)
-            return -1;
+            throw new CropException("There is insufficient wheat to plant this much land..");
 
         // wheatInStore = wheatInStore - wheatToPlant
         wheat -= wheatToPlant;
         cropData.setWheatInStore(wheat);
-
-        // return wheatInStore
-        return wheat;    
     }
 
     // The sellLand method
@@ -168,9 +164,7 @@ public class CropControl {
 
         //wheatInStore = wheatInStore + acresToSell * landPrice
         wheat += (acresToSell * landPrice);
-        cropData.setWheatInStore(wheat);
-
-        
+        cropData.setWheatInStore(wheat);        
     }
 
     /*
@@ -187,7 +181,7 @@ public class CropControl {
     //    Amount of wheat >= number of acres * buy price 
     // 3. Amount of population must be enough to tend land
     //    Population 10 >= for each acre
-    public static void buyLand(int landPrice, int acresToBuy, CropData cropData)throws CropException {
+    public static void buyLand(int landPrice, int acresToBuy, CropData cropData) throws CropException {
         int wheat = cropData.getWheatInStore();
         int owned = cropData.getAcresOwned();
         int population = cropData.getPopulation();
@@ -211,8 +205,8 @@ public class CropControl {
 
         //wheatInStore = wheatInStore - (acresToBuy*landPrice)
         wheat -= (acresToBuy*landPrice);
-        cropData.setWheatInStore(wheat);    
-        
+        cropData.setLandPrice(landPrice);
+        cropData.setWheatInStore(wheat);           
     }
 
     /*
@@ -296,9 +290,8 @@ public class CropControl {
         int acres = cropData.getAcresPlanted();
         int offering = cropData.getOffering();
         int wheat = cropData.getWheatInStore();
-        int harvest = 0;
-        int yield = 1;
-
+        int yield = cropData.getCropYield();        
+       
         // if offering is < 8%, yield between 1 and 3 bushels/acre
         if (offering < 8) {
             yield = (random.nextInt(3)+1);
@@ -315,7 +308,7 @@ public class CropControl {
         }
 
         // harvest = acres * yield
-        harvest = acres * yield;
+        int harvest = acres * yield;
         cropData.setHarvest(harvest);
 
         // wheatInStore = wheatInStore + harvest
@@ -325,20 +318,21 @@ public class CropControl {
         // return bushels eatenByRats
         return harvest;
     }
-        
+     
+    // author Susan Peay
     // The payOffering method
     // Purpose: To pay offerings
     // Parameters: offering
     // Returns: The number of bushels paid as an offering
     // Pre-conditions: offering must be positive
     // and not greater than 100
-    public static int payOffering(int offering, CropData cropData) {
+    public static void payOffering(int offering, CropData cropData) throws CropException {
         int harvest = cropData.getHarvest();
         int wheat = cropData.getWheatInStore();
     
         // offering must be positive and less than 100
         if (offering < 0 || offering > 100)
-            return -1;
+            throw new CropException("Offering must be between 0 and 100.");
         
         // find offering in bushels of wheat
         int bushels = harvest * offering / 100;
@@ -354,35 +348,5 @@ public class CropControl {
         // adjust wheatInStore
         wheat -= bushels;   
         cropData.setWheatInStore(wheat);
-        
-        // return bushels offered
-        return bushels;
-    }
-
-    // author Susan Peay
-    // Purpose: store a user inputted value for (offering)
-    // Parameters:toOffer2
-    // and cropData
-    // Pre-conditions: must be positive, and <= 100
-    // and return the number the user inputted    
-    public static int setOffering(int toOffer2, CropData cropData){
-        // If perToOffer <0, return -1        
-        if (toOffer2 < 0){
-            return -1;
-        }
-        // if offering > 100, return -1
-        if (toOffer2 > 100)  {
-            return -1;
-        }
-        
-        //save number into the variable offering
-        cropData.setOffering(toOffer2);
-          
-        // return (offering)
-        return toOffer2;
-    } 
-
-    public static void sellLand(int toSell, CropData cropData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }    
 }

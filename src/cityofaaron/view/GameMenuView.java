@@ -64,6 +64,7 @@ public class GameMenuView extends MenuView {
     // ===================================     
     public void viewMap() {
         ListView.showMapView();
+        ListView.showLegendView();
     }
     
     // The viewList method
