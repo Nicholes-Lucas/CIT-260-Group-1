@@ -150,17 +150,17 @@ public class CropControl {
     // Returns: the number of acres owned after the sale
     // Pre-conditions: acres to sell must be positive
     // and <= acresOwned
-    public static int sellLand(int landPrice, int acresToSell, CropData cropData) {
+    public static void sellLand(int landPrice, int acresToSell, CropData cropData) throws CropException {
         int owned = cropData.getAcresOwned();
         int wheat = cropData.getWheatInStore();
 
         //if acresToSell < 0, return -1
         if(acresToSell < 0)
-            return -1;
+           throw new CropException("Please enter a positive number.");
 
         //if acresToSell > acresOwned, return -1        
         if(acresToSell > owned)
-            return -1;
+            throw new CropException("You cannot sell more land than you own.");
 
         //acresOwned = acresOwned - acresToSell
         owned -= acresToSell;
@@ -170,8 +170,7 @@ public class CropControl {
         wheat += (acresToSell * landPrice);
         cropData.setWheatInStore(wheat);
 
-        //return acresOwned
-        return owned;
+        
     }
 
     /*
@@ -382,4 +381,8 @@ public class CropControl {
         // return (offering)
         return toOffer2;
     } 
+
+    public static void sellLand(int toSell, CropData cropData) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

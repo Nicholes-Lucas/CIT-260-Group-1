@@ -127,15 +127,33 @@ public class CropView {
         
         // Ask the user "how many acres of land do you want to sell?"
         System.out.format("%nYou have " + owned + " acres of land.");
-        System.out.print("\nHow many acres of land do you want to sell? ");
+        //System.out.print("\nHow many acres of land do you want to sell? ");
 
         //  Get the user’s input and save it.
-        int toSell;
-        toSell = keyboard.nextInt();
+         int toSell;
+         boolean paramsNotOkay;
+ do
+ {
+       paramsNotOkay = false;
+       System.out.print("\nHow many acres of land do you wish to sell? ");  
+       toSell = keyboard.nextInt();
+       try
+       {
+           // Call the sellLand() method in the control layer to buy the land
         
-        // Call the sellLand() method in the control layer to sell the land
         CropControl.sellLand(owned, toSell, cropData);
-    }       
+       }
+       
+       catch(CropException e)
+        {
+             System.out.println("I am sorry, I cannot do this.");
+             System.out.println(e.getMessage());
+             paramsNotOkay = true;
+        }
+} while(paramsNotOkay);
+
+        
+    } 
        
     // Lucas Nicholes
     // The showStarvedView method
