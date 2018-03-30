@@ -23,8 +23,9 @@ public class ListMenuView extends MenuView {
                        " 3 - List the provisions in the storehouse\n" +
                        " 4 - List the authors of this game\n" +
                        " 5 - Save the animals list to disk\n" +
-                       " 6 - Return to the Game menu\n",
-                       6);
+                       " 6 - Save the provisions list to disk\n" +
+                       " 7 - Return to the Game menu\n",
+                       7);
 
     }    
    
@@ -44,7 +45,10 @@ public class ListMenuView extends MenuView {
         else if (option == 5) {
             printAnimalsList();
         }
-        else if (option == 6) {
+         else if (option == 6) {
+            printProvisionsList();
+        }
+        else if (option == 7) {
             displayGameMenu();
         }
         else {
@@ -110,5 +114,21 @@ public class ListMenuView extends MenuView {
     // ===================================     
     public void displayGameMenu() {
         System.out.println("\nGame Menu selected.");
-    }    
+    }   
+    
+    //author @kristinaplauche
+    //The printProvisionsList method
+    //Purpose: prints list of provisions to disk
+    //Parameters: outputLocation
+    //Returns: none
+    
+    public void printProvisionsList() {
+        String outputProvisions;
+        
+        System.out.println("\n\nEnter the file location to save the list to:");
+        keyboard.nextLine();
+        outputProvisions = keyboard.nextLine();
+    }
+    
+    
 }

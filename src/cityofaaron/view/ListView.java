@@ -74,6 +74,22 @@ public class ListView {
                                "\n\tQuantity: " + provisions.getNumber());
         }        
     }
+     // @author Kristina Plauche
+    public static void printProvisionsList(String outputProvisions) {
+        try(PrintWriter out = new PrintWriter(outputProvisions)) {
+            
+            out.println("\n\nList of Provisions");
+            out.printf("%n%-18s%8s","  Item  ","Quantity");
+            out.printf("%n%-18s%8s","------------------","--------");
+            
+            for (ListItem provisions : theProvisions) {
+                out.printf("%n%-18s%8d", provisions.getName()
+                                      , provisions.getNumber());
+            }
+        }   catch (Exception e) {
+            System.out.println("Error saving provision list to file");
+        }
+    }
     
     public static void listGameAuthors() {
         
