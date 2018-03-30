@@ -121,6 +121,7 @@ public class ListMenuView extends MenuView {
     //Purpose: prints list of provisions to disk
     //Parameters: outputLocation
     //Returns: none
+  
     
     public void printProvisionsList() {
         String outputProvisions;
@@ -128,6 +129,8 @@ public class ListMenuView extends MenuView {
         System.out.println("\n\nEnter the file location to save the list to:");
         keyboard.nextLine();
         outputProvisions = keyboard.nextLine();
+        
+        ListView.printProvisionsList(outputProvisions);
     }
     
     
