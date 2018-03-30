@@ -3,6 +3,8 @@ package cityofaaron.view;
 
 import cityofaaron.model.*;
 import cityofaaron.CityOfAaron;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,6 +32,23 @@ public class ListView {
             System.out.println("\n\tItem: " + animal.getName() +
                                "\n\tQuantity: " + animal.getNumber());
         }        
+    }
+    
+    // @author Lucas Nicholes
+    public static void printAnimalsList(String outputLocation) {
+        try(PrintWriter out = new PrintWriter(outputLocation)) {
+            
+            out.println("\n\nList of Animals in Storehouse");
+            out.printf("%n%-8s%8s","  Item  ","Quantity");
+            out.printf("%n%-8s%8s","--------","--------");
+            
+            for (ListItem animal : theAnimals) {
+                out.printf("%n%-8s%8d", animal.getName()
+                                      , animal.getNumber());
+            }
+        }   catch (IOException ex) {
+            System.out.println("Error saving animal list to file");
+        }
     }
     
     // @author Susan Peay

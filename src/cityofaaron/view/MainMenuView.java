@@ -58,8 +58,8 @@ public class MainMenuView extends MenuView{
     // Parameters: none
     // Returns: none
     // ===================================     
-    public void startNewGame()
-    {        
+    public void startNewGame() {        
+        
         // Show banner page
         System.out.println(
             "\n********************************************************\n" +
@@ -93,14 +93,27 @@ public class MainMenuView extends MenuView{
     } 
     
     // The startSavedGame method
-    // Purpose: starts saved game
+    // Purpose: loads a saved game object from disk and start the game
     // Parameters: none
     // Returns: none
     // ===================================     
     public void startSavedGame() {
-        System.out.println("\nStart saved game option selected.");
-    }  
-  
+
+        String filePath ;
+        
+        // prompt user and get a file path
+        System.out.println("\n\nEnter the file path where you want to load the game from:");
+        keyboard.nextLine();  // this gets rid of the newline left by getMenuOption( )
+        filePath = keyboard.nextLine();
+         
+        // calls the getSavedGame( ) method in the GameControl class to load the game
+        GameControl.getSavedGame(filePath);
+
+        // and now you can display the game menu for the loaded game
+        GameMenuView gmv = new GameMenuView();
+        gmv.displayMenu();
+    }
+    
     // The displayHelpMenuView method
     // Purpose: displays help menu
     // Parameters: none
@@ -118,7 +131,13 @@ public class MainMenuView extends MenuView{
     // Returns: none
     // ===================================     
     public void displaySavedGameView() {
-        System.out.println("\nDisplay saved game option selected.");
+        String savePath;
+        
+        System.out.println("\n\nEnter the file location to save the game to:");
+        keyboard.nextLine();
+        savePath = keyboard.nextLine();
+         
+        GameControl.saveGame(savePath);
     }
 }
     

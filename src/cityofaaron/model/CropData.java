@@ -1,3 +1,4 @@
+
 package cityofaaron.model;
 
 import java.io.Serializable;

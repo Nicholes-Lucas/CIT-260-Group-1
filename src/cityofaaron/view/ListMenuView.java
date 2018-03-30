@@ -22,8 +22,9 @@ public class ListMenuView extends MenuView {
                        " 2 - List the tools in the storehouse\n" +
                        " 3 - List the provisions in the storehouse\n" +
                        " 4 - List the authors of this game\n" +
-                       " 5 - Return to the Game menu\n",
-                       5);
+                       " 5 - Save the animals list to disk\n" +
+                       " 6 - Return to the Game menu\n",
+                       6);
 
     }    
    
@@ -41,6 +42,9 @@ public class ListMenuView extends MenuView {
             listTeam();
         }
         else if (option == 5) {
+            printAnimalsList();
+        }
+        else if (option == 6) {
             displayGameMenu();
         }
         else {
@@ -82,6 +86,21 @@ public class ListMenuView extends MenuView {
     // ===================================     
     public void listTeam() {
         ListView.listGameAuthors();
+    }
+    
+    // The printAnimalsList method
+    // Purpose: prints list of animals to disk
+    // Parameters: outputLocation
+    // Returns: none
+    // ===================================     
+    public void printAnimalsList() {
+        String outputLocation ;
+        
+        System.out.println("\n\nEnter the file location to save the list to:");
+        keyboard.nextLine();
+        outputLocation = keyboard.nextLine();
+         
+        ListView.printAnimalsList(outputLocation);
     }
     
     // The displayGameMenu method
