@@ -1,13 +1,13 @@
 
 package cityofaaron.control;
 
-import java.util.ArrayList;
 import cityofaaron.CityOfAaron;
 import cityofaaron.model.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  *
@@ -40,13 +40,12 @@ public class GameControl {
         createMap( );
     }
     
-        // the getSavedGame method
+    // the getSavedGame method
     // Purpose: load a saved game from disk
     // Parameters: the file path
     // Returns: none
     // Side Effect: the game reference in the driver is updated
-    public static void getSavedGame(String filePath)
-    {
+    public static void getSavedGame(String filePath) {
         Game theGame = null;
         
         try (FileInputStream fips = new FileInputStream(filePath))
@@ -61,17 +60,18 @@ public class GameControl {
         }
     }
     
-    public static void saveGame(String savePath)
-    {
+    // the saveGame method
+    public static void saveGame(String savePath) {
+        //Game saveGame = CityOfAaron.getTheGame();
         
-        try (FileOutputStream fips = new FileOutputStream(savePath))
+        try (FileOutputStream fops = new FileOutputStream (savePath))
         {
-            ObjectOutputStream output = new ObjectOutputStream(fips);
+            ObjectOutputStream output = new ObjectOutputStream(fops);
             output.writeObject(CityOfAaron.getTheGame());
-            
         }
         catch(Exception e)
         {
+            //System.out.println("\nI/O Error: " + e.getMessage());
             System.out.println("\nThere was an error saving the game file");
         }
     }

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cityofaaron.model;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +14,8 @@ public class Game implements Serializable {
     private ArrayList<ListItem> animals = new ArrayList<>();
     private ArrayList<ListItem> tools = new ArrayList<>();
     private ArrayList<ListItem> provisions = new ArrayList<>();
-
+    private CropData theCrops = null; 
+    
     public Game() {
     }
 
@@ -69,9 +66,4 @@ public class Game implements Serializable {
     public void setProvisions(ArrayList<ListItem> provisions) {
         this.provisions = provisions;
     }
-
-    
-   private CropData theCrops = null; 
-    
-    
 }
