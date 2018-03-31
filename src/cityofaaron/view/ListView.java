@@ -63,6 +63,23 @@ public class ListView {
         }        
     }
     
+        // @author Susan Peay
+    public static void printToolsList(String outputLocation) {
+        try(PrintWriter out = new PrintWriter(outputLocation)) {
+            
+            out.println("\n\nList of Tools in Storehouse");
+            out.printf("%n%-8s%8s","  Item  ","Quantity");
+            out.printf("%n%-8s%8s","--------","--------");
+            
+            for (ListItem tools : theTools) {
+                out.printf("%n%-8s%8d", tools.getName()
+                                      , tools.getNumber());
+            }
+        }   catch (IOException ex) {
+            System.out.println("Error saving tools list to file");
+        }
+    }
+    
     //@author Kristina Plauche
     public static void listProvisionsView() {
             

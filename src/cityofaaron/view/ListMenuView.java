@@ -24,8 +24,9 @@ public class ListMenuView extends MenuView {
                        " 4 - List the authors of this game\n" +
                        " 5 - Save the animals list to disk\n" +
                        " 6 - Save the provisions list to disk\n" +
-                       " 7 - Return to the Game menu\n",
-                       7);
+                       " 7 - Save the tools list to disk\n" +
+                       " 8 - Return to the Game menu\n",
+                       8);
 
     }    
    
@@ -48,7 +49,10 @@ public class ListMenuView extends MenuView {
          else if (option == 6) {
             printProvisionsList();
         }
-        else if (option == 7) {
+         else if (option == 7) {
+            printToolsList();
+        }
+        else if (option == 8) {
             displayGameMenu();
         }
         else {
@@ -131,6 +135,21 @@ public class ListMenuView extends MenuView {
         outputProvisions = keyboard.nextLine();
         
         ListView.printProvisionsList(outputProvisions);
+    }
+    
+    // printToolsList 
+    // Purpose: prints list of tools to a file saved on a disk/drive
+    // Parameters: outputLocation
+    // Returns: none
+    // @author Susan Peay   
+    public void printToolsList() {
+        String outputLocation ;
+        
+        System.out.println("\n\nEnter the file location to save the list to:");
+        keyboard.nextLine();
+        outputLocation = keyboard.nextLine();
+         
+        ListView.printToolsList(outputLocation);
     }
     
     
