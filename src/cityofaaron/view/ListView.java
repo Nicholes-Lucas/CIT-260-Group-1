@@ -84,7 +84,7 @@ public class ListView {
             
             for (ListItem provisions : theProvisions) {
                 out.printf("%n%-18s%8d", provisions.getName()
-                                      , provisions.getNumber());
+                                       , provisions.getNumber());
             }
         }   catch (Exception e) {
             System.out.println("Error saving provision list to file");

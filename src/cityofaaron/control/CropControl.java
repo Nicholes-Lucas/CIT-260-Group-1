@@ -196,7 +196,7 @@ public class CropControl {
             throw new CropException("There is insufficient wheat to buy this much land.");
 
         //if population cannot tend new land, return -1
-        if(population < (acresToBuy + owned)/10)
+        if(population < (acresToBuy + owned)/10 && acresToBuy > 0)
             throw new CropException("There are not enough people to tend this much land.");
 
         //acresOwned = acresOwned+acresToBuy
@@ -310,6 +310,7 @@ public class CropControl {
         // harvest = acres * yield
         int harvest = acres * yield;
         cropData.setHarvest(harvest);
+        cropData.setCropYield(yield);
 
         // wheatInStore = wheatInStore + harvest
         wheat += harvest;
@@ -348,5 +349,5 @@ public class CropControl {
         // adjust wheatInStore
         wheat -= bushels;   
         cropData.setWheatInStore(wheat);
-    }    
+    }
 }

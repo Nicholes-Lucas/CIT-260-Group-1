@@ -91,7 +91,8 @@ public class GameControl {
         theCrops.setAcresPlanted(1000);
         theCrops.setHarvest(3000);
         theCrops.setOfferingBushels(300);
-        theCrops.setAcresPlanted(1000); 
+        theCrops.setAcresPlanted(1000);
+        theCrops.setNumStarved(0);        
 
         theGame.setCropData(theCrops);         
     }

@@ -18,6 +18,7 @@ public class CropView {
     // Get reference to the Game object and the Crops object
     private static Game theGame = CityOfAaron.getTheGame();
     private static CropData cropData = theGame.getCropData();
+    private static Player thePlayer = theGame.getThePlayer();
 
     // The buyLandView method
     // Purpose: interface with the user input for buying land
@@ -255,8 +256,7 @@ public class CropView {
         CropControl.growPopulation(cropData);
         
         // increment year in game
-        int year = cropData.getYear();
-        cropData.setYear(++year);
+        incrementYearView();
         
         // call the cropReportView() method
         cropReportView();                
@@ -297,5 +297,106 @@ public class CropView {
                 paramsNotOkay = true;
             }
         } while(paramsNotOkay);
-    }    
+    }
+    
+    // Lucas Nicholes
+    // The incrementYearView method
+    // Purpose: To increment the game one year
+    public static void incrementYearView() {
+        int year = cropData.getYear();
+        int population = cropData.getPopulation();
+        String name = thePlayer.getName();
+        
+        // Display how many people have starved        
+        if (year < 10) 
+            cropData.setYear(++year);
+        
+        if (year == 10) {
+            
+            if (population < 100) {
+                System.out.format(
+                    "%n***********************************************************%n" +
+                    "  Not bad " + name + ".%n" +
+                    "* Your term as ruler over the City of Aaron is at an end. *%n" +
+                    "* While you have kept most of the city's people alive,    *%n" +
+                    "* perhaps you could have exercised better decision making *%n" +
+                    "* to encourage the city's growth. Nevertheless, thank you *%n" +
+                    "* for your diligent service to the City of Aaron.         *%n" +        
+                    "*                                                         *%n" +
+                    "*                        GAME OVER!                       *%n" +
+                    "***********************************************************%n");
+            }
+            
+            if (population == 100) {
+                System.out.format(
+                    "%n***********************************************************%n" +
+                    "  Well done " + name + "!%n" +
+                    "* You have successfully completed your term as ruler over *%n" +
+                    "* the City of Aaron. Like Joseph in Egypt, you have ruled *%n" +
+                    "* in wisdom and faith and have kept the city's people fed *%n" +
+                    "* over the past 10 years. The City of Aaron thanks you!!! *%n" +
+                    "*                                                         *%n" +
+                    "*                        GAME OVER!                       *%n" +
+                    "***********************************************************%n");
+            }
+            
+            if (population > 100) {
+                System.out.format(
+                    "%n***********************************************************%n" +
+                    "  Congratulations " + name + "!!!%n" +
+                    "* You have successfully completed your term as ruler over *%n" +
+                    "* the City of Aaron. Like Joseph in Egypt, you have ruled *%n" +
+                    "* in wisdom and faith and have kept the city's people fed *%n" +
+                    "* over the past 10 years. Additionally, you have gone the *%n" +
+                    "* extra mile and encouraged the city to grow and flourish *%n" +
+                    "* during your reign. Your name will forever be remembered *%n" +
+                    "* and loved by the people of the City of Aaron. Bravo!!!  *%n" +
+                    "*                                                         *%n" +
+                    "*                        GAME OVER!                       *%n" +
+                    "***********************************************************%n");
+            }            
+            
+            System.out.format(
+                "%nFinal Statistics for the City of Aaron:%n");
+                    
+                // The year number 
+            year = cropData.getYear();
+            System.out.format("Current Year: " + year + "\n");
+
+            // How many people starved 
+            int starved = cropData.getNumStarved();
+            System.out.format("Starved : " + starved + "\n");
+
+            // How many people came to the city
+            int movedIn = cropData.getNewPeople();
+            System.out.format("New People: " + movedIn + "\n");
+
+            // The current population 
+            population = cropData.getPopulation();
+            System.out.format("Current Population " + population + "\n");
+
+            // The number of acres of crop land owned by the city
+            int ownedAcres = cropData.getAcresOwned();
+            System.out.format("Acres Owned: " + ownedAcres + "\n");
+
+            // The number of bushels per acre in this years harvest
+            int yield = cropData.getCropYield();
+            System.out.format("Crop Yield: " + yield + "\n");
+
+            // The number of bushels of wheat paid in offerings
+            int offerings = cropData.getOfferingBushels();
+            System.out.format("Offering Bushels: " + offerings + "\n");
+
+            // The number of bushels of wheat eaten by rats
+            int ratFood = cropData.getEatenByRats();
+            System.out.format("Eaten By Rats: " + ratFood + "\n");
+
+            // The number of bushels of wheat in store
+            int wheatStorage = cropData.getWheatInStore();
+            System.out.format("Wheat in Store: " + wheatStorage + "\n");     
+            
+            MainMenuView mmv = new MainMenuView();
+            mmv.displayMenu();        
+        }
+    }
 }

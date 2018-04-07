@@ -107,15 +107,6 @@ public class ListMenuView extends MenuView {
         ListView.printAnimalsList(outputLocation);
     }
     
-    // The displayGameMenu method
-    // Purpose: returns player back to Game menu
-    // Parameters: none
-    // Returns: none
-    // ===================================     
-    public void displayGameMenu() {
-        System.out.println("\nGame Menu selected.");
-    }   
-    
     //author @kristinaplauche
     //The printProvisionsList method
     //Purpose: prints list of provisions to disk
@@ -128,7 +119,16 @@ public class ListMenuView extends MenuView {
         System.out.println("\n\nEnter the file location to save the list to:");
         keyboard.nextLine();
         outputProvisions = keyboard.nextLine();
+        
+        ListView.printProvisionsList(outputProvisions);
     }
     
-    
+    // The displayGameMenu method
+    // Purpose: returns player back to Game menu
+    // Parameters: none
+    // Returns: none
+    // ===================================     
+    public void displayGameMenu() {
+        System.out.println("\nGame Menu selected.");
+    }   
 }
